@@ -12,16 +12,24 @@
 
 @required
 
+/// 指定SCSegmentControl的item总数
+/// @param segmentControl segmentControl实例
 - (NSInteger)numberOfItemsInSegmentControl:(SCSegmentControl *)segmentControl;
 
+/// 自定义特定index下的view
+/// @param segmentControl segmentControl实例
+/// @param index index
 - (UIView *)segmentControl:(SCSegmentControl *)segmentControl itemAtIndex:(NSInteger)index;
 
 @optional
 
-- (UIView *)progressForSegmentControl:(SCSegmentControl *)segmentControl;
+/// 指定每个item之间的间距
+/// @param segmentControl segmentControl实例
+- (CGFloat)minimumInteritemSpacingInSegmentControl:(SCSegmentControl *)segmentControl;
 
-- (CGFloat)segmentControl:(SCSegmentControl *)segmentControl minimumInteritemSpacingAtIndex:(NSInteger)index;
-
+/// 指定对应下标item的宽度
+/// @param segmentControl segmentControl实例
+/// @param index index
 - (CGFloat)segmentControl:(SCSegmentControl *)segmentControl widthForItemAtIndex:(NSInteger)index;
 
 @end

@@ -61,10 +61,6 @@ UICollisionBehaviorDelegate
         return;
     }
     
-    if (self.dataSource && [self.dataSource respondsToSelector:@selector(progressForSegmentControl:)]) {
-        self.progressView = [self.dataSource progressForSegmentControl:self];
-    }
-    
     if (!self.progressView) {
         self.progressView = [[SCSegmentControlProgress alloc] init];
     }
@@ -161,8 +157,8 @@ UICollisionBehaviorDelegate
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
     self.minimumInteritemSpacing = 0;
     
-    if (self.delegate && [self.delegate respondsToSelector:@selector(segmentControl:minimumInteritemSpacingAtIndex:)]) {
-        self.minimumInteritemSpacing = [self.dataSource segmentControl:self minimumInteritemSpacingAtIndex:section];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(minimumInteritemSpacingInSegmentControl:)]) {
+        self.minimumInteritemSpacing = [self.dataSource minimumInteritemSpacingInSegmentControl:self];
     }
     return self.minimumInteritemSpacing;
 }

@@ -46,7 +46,7 @@ SCSegmentControlDelegate
     return label;
 }
 
-- (CGFloat)segmentControl:(SCSegmentControl *)segmentControl minimumInteritemSpacingAtIndex:(NSInteger)index {
+- (CGFloat)minimumInteritemSpacingInSegmentControl:(SCSegmentControl *)segmentControl {
     return 20;
 }
 
