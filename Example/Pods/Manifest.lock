@@ -1,0 +1,16 @@
+PODS:
+  - SCSegmentControl (1.0.0)
+
+DEPENDENCIES:
+  - SCSegmentControl (from `../`)
+
+EXTERNAL SOURCES:
+  SCSegmentControl:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  SCSegmentControl: 3e856e688a68f04eb6b29a7fadb1858299bf6a8a
+
+PODFILE CHECKSUM: f189c4990ed36886cdb4d0b3557dfa67cbeea2cc
+
+COCOAPODS: 1.9.2

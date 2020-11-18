@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C67F303E11AA7319AD7D97C /* libPods-SCSegmentControl_Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BE4D60D5C32EF99A5A14245 /* libPods-SCSegmentControl_Tests.a */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
 		6003F592195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
@@ -20,10 +21,9 @@
 		6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
-		679462D55443124F075ADDC4 /* Pods_SCSegmentControl_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40DB42A90A41CC70F28457CE /* Pods_SCSegmentControl_Tests.framework */; };
 		71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */; };
-		81BE6E5DFFD6D25B1BC95AFA /* Pods_SCSegmentControl_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F88C049D8F40F422F9D07795 /* Pods_SCSegmentControl_Example.framework */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
+		E057C10568740632FC5F9CD0 /* libPods-SCSegmentControl_Example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 87BFA944F00931D85CCEA2A5 /* libPods-SCSegmentControl_Example.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +38,7 @@
 
 /* Begin PBXFileReference section */
 		1BF8D2431B5094450597A1F2 /* Pods-SCSegmentControl_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SCSegmentControl_Tests.debug.xcconfig"; path = "Target Support Files/Pods-SCSegmentControl_Tests/Pods-SCSegmentControl_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		40DB42A90A41CC70F28457CE /* Pods_SCSegmentControl_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SCSegmentControl_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3BE4D60D5C32EF99A5A14245 /* libPods-SCSegmentControl_Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SCSegmentControl_Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58A195388D20070C39A /* SCSegmentControl_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SCSegmentControl_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6003F58F195388D20070C39A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -59,14 +59,14 @@
 		6003F5BB195388D20070C39A /* Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tests.m; sourceTree = "<group>"; };
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
 		71719F9E1E33DC2100824A3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		7C983A17ECE6080D28088851 /* SCSegmentControl.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = SCSegmentControl.podspec; path = ../SCSegmentControl.podspec; sourceTree = "<group>"; };
+		7C983A17ECE6080D28088851 /* SCSegmentControl.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = SCSegmentControl.podspec; path = ../SCSegmentControl.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		8591FB689ACFDACCD95DC63C /* Pods-SCSegmentControl_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SCSegmentControl_Example.debug.xcconfig"; path = "Target Support Files/Pods-SCSegmentControl_Example/Pods-SCSegmentControl_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		8BC16EB7963881B2801D786D /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
-		C48E332D307A2BD08947DDEB /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		87BFA944F00931D85CCEA2A5 /* libPods-SCSegmentControl_Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SCSegmentControl_Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8BC16EB7963881B2801D786D /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		C48E332D307A2BD08947DDEB /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		C88F3926BECA67082C77639E /* Pods-SCSegmentControl_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SCSegmentControl_Example.release.xcconfig"; path = "Target Support Files/Pods-SCSegmentControl_Example/Pods-SCSegmentControl_Example.release.xcconfig"; sourceTree = "<group>"; };
 		D3C42D6935366C89E7F66599 /* Pods-SCSegmentControl_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SCSegmentControl_Tests.release.xcconfig"; path = "Target Support Files/Pods-SCSegmentControl_Tests/Pods-SCSegmentControl_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		F88C049D8F40F422F9D07795 /* Pods_SCSegmentControl_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SCSegmentControl_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,7 +77,7 @@
 				6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */,
 				6003F592195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F58E195388D20070C39A /* Foundation.framework in Frameworks */,
-				81BE6E5DFFD6D25B1BC95AFA /* Pods_SCSegmentControl_Example.framework in Frameworks */,
+				E057C10568740632FC5F9CD0 /* libPods-SCSegmentControl_Example.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,7 +88,7 @@
 				6003F5B0195388D20070C39A /* XCTest.framework in Frameworks */,
 				6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */,
-				679462D55443124F075ADDC4 /* Pods_SCSegmentControl_Tests.framework in Frameworks */,
+				3C67F303E11AA7319AD7D97C /* libPods-SCSegmentControl_Tests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,7 +103,6 @@
 				1BF8D2431B5094450597A1F2 /* Pods-SCSegmentControl_Tests.debug.xcconfig */,
 				D3C42D6935366C89E7F66599 /* Pods-SCSegmentControl_Tests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -135,8 +134,8 @@
 				6003F58F195388D20070C39A /* CoreGraphics.framework */,
 				6003F591195388D20070C39A /* UIKit.framework */,
 				6003F5AF195388D20070C39A /* XCTest.framework */,
-				F88C049D8F40F422F9D07795 /* Pods_SCSegmentControl_Example.framework */,
-				40DB42A90A41CC70F28457CE /* Pods_SCSegmentControl_Tests.framework */,
+				87BFA944F00931D85CCEA2A5 /* libPods-SCSegmentControl_Example.a */,
+				3BE4D60D5C32EF99A5A14245 /* libPods-SCSegmentControl_Tests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -208,7 +207,6 @@
 				6003F586195388D20070C39A /* Sources */,
 				6003F587195388D20070C39A /* Frameworks */,
 				6003F588195388D20070C39A /* Resources */,
-				93CF7379502F41415E841B67 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -258,6 +256,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -295,24 +294,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		93CF7379502F41415E841B67 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SCSegmentControl_Example/Pods-SCSegmentControl_Example-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/SCSegmentControl/SCSegmentControl.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SCSegmentControl.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SCSegmentControl_Example/Pods-SCSegmentControl_Example-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		CE19F92BE0EE4523FE39F4FC /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

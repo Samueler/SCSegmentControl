@@ -22,7 +22,7 @@ pod 'SCSegmentControl'
 
 ## Author
 
-samueler.chen@gmail.com, chenty@mama.cn
+Samueler.Chen, samueler.chen@gmail.com
 
 ## License
 

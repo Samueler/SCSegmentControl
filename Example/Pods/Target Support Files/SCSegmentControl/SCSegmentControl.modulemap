@@ -1,0 +1,6 @@
+framework module SCSegmentControl {
+  umbrella header "SCSegmentControl-umbrella.h"
+
+  export *
+  module * { export * }
+}
