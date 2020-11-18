@@ -2,15 +2,24 @@
 //  SCSegmentControlDataSource.h
 //  SCSegmentControl
 //
-//  Created by 妈妈网 on 2020/11/18.
+//  Created by ty.Chen on 2020/11/18.
 //
 
 #import <Foundation/Foundation.h>
-
-NS_ASSUME_NONNULL_BEGIN
+@class SCSegmentControl;
 
 @protocol SCSegmentControlDataSource <NSObject>
 
-@end
+@required
 
-NS_ASSUME_NONNULL_END
+- (NSInteger)numberOfItemsInSegmentControl:(SCSegmentControl *)segmentControl;
+
+- (UIView *)segmentControl:(SCSegmentControl *)segmentControl itemAtIndex:(NSInteger)index;
+
+@optional
+
+- (UIView *)progressForSegmentControl:(SCSegmentControl *)segmentControl;
+
+- (CGFloat)segmentControl:(SCSegmentControl *)segmentControl minimumLineSpacingAtIndex:(NSInteger)index;
+
+@end

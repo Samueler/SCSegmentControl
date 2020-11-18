@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  SCSegmentControl: 3e856e688a68f04eb6b29a7fadb1858299bf6a8a
+  SCSegmentControl: 79afeb55ec0031ce38e31a263076414c4b59f7ef
 
 PODFILE CHECKSUM: f189c4990ed36886cdb4d0b3557dfa67cbeea2cc
 

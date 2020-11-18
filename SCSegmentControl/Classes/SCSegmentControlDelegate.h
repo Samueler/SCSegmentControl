@@ -2,15 +2,17 @@
 //  SCSegmentControlDelegate.h
 //  SCSegmentControl
 //
-//  Created by 妈妈网 on 2020/11/18.
+//  Created by ty.Chen on 2020/11/18.
 //
 
 #import <Foundation/Foundation.h>
-
-NS_ASSUME_NONNULL_BEGIN
+@class SCSegmentControl;
 
 @protocol SCSegmentControlDelegate <NSObject>
 
+@optional
+
+- (void)segmentControl:(SCSegmentControl *)segmentControl didSelectItemAtIndex:(NSInteger)index;
+
 @end
 
-NS_ASSUME_NONNULL_END

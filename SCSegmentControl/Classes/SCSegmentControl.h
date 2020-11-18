@@ -2,15 +2,21 @@
 //  SCSegmentControl.h
 //  SCSegmentControl
 //
-//  Created by 妈妈网 on 2020/11/18.
+//  Created by ty.Chen on 2020/11/18.
 //
 
 #import <UIKit/UIKit.h>
-
-NS_ASSUME_NONNULL_BEGIN
+#import "SCSegmentControlDataSource.h"
+#import "SCSegmentControlDelegate.h"
 
 @interface SCSegmentControl : UIView
 
-@end
+@property (nonatomic, weak) id<SCSegmentControlDelegate> dataSource;
+@property (nonatomic, weak) id<SCSegmentControlDelegate> delegate;
+@property (nonatomic, assign) UIEdgeInsets contentInset;
 
-NS_ASSUME_NONNULL_END
+@property (nonatomic, assign) CGFloat progressBottomSpace;
+
+- (void)reloadData;
+
+@end
