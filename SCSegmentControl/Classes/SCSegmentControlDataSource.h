@@ -20,6 +20,8 @@
 
 - (UIView *)progressForSegmentControl:(SCSegmentControl *)segmentControl;
 
-- (CGFloat)segmentControl:(SCSegmentControl *)segmentControl minimumLineSpacingAtIndex:(NSInteger)index;
+- (CGFloat)segmentControl:(SCSegmentControl *)segmentControl minimumInteritemSpacingAtIndex:(NSInteger)index;
+
+- (CGFloat)segmentControl:(SCSegmentControl *)segmentControl widthForItemAtIndex:(NSInteger)index;
 
 @end
