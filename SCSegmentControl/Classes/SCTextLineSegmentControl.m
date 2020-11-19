@@ -15,6 +15,7 @@ SCSegmentControlDelegate
 >
 
 @property (nonatomic, strong) SCSegmentControl *segmentControl;
+@property (nonatomic, strong) UIScrollView *indicatorScrollView;
 @property (nonatomic, strong) SCSegmentControlLineIndicator *indicator;
 @property (nonatomic, strong) CAGradientLayer *indicatorGradientLayer;
 
@@ -24,7 +25,6 @@ SCSegmentControlDelegate
 
 @synthesize scrollToCenter = _scrollToCenter;
 @synthesize contentInset = _contentInset;
-@synthesize contentSize = _contentSize;
 @synthesize currentIndex = _currentIndex;
 @synthesize delegate = _delegate;
 @synthesize dataSource = _dataSource;
@@ -32,7 +32,6 @@ SCSegmentControlDelegate
 - (instancetype)init {
     if (self = [super init]) {
         [self commonInit];
-        [self addObserver];
     }
     return self;
 }
@@ -40,7 +39,6 @@ SCSegmentControlDelegate
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
         [self commonInit];
-        [self addObserver];
     }
     return self;
 }
@@ -51,7 +49,7 @@ SCSegmentControlDelegate
     [super layoutSubviews];
     
     self.segmentControl.frame = self.bounds;
-    self.indicator.frame = CGRectMake(0, self.frame.size.height - self.indicatorHeight - self.indicatorBottomSpace, self.contentSize.width, self.indicatorHeight);
+    self.indicator.frame = CGRectMake(0, self.frame.size.height - self.indicatorHeight - self.indicatorBottomSpace, self.indicatorRegularWidth, self.indicatorHeight);
     self.indicatorGradientLayer.frame = self.indicator.bounds;
 }
 
@@ -86,26 +84,11 @@ SCSegmentControlDelegate
 
 - (void)commonInit {
     _indicatorHeight = 4;
-    _indicatorRegularWidth = 10;
+    _indicatorRegularWidth = 50;
     _indicatorBackgroundColor = UIColor.orangeColor;
     
     [self addSubview:self.segmentControl];
     [self addSubview:self.indicator];
-}
-
-- (void)addObserver {
-    [self.segmentControl addObserver:self forKeyPath:@"contentSize" options:NSKeyValueObservingOptionNew context:nil];
-}
-
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
-    if ([object isEqual:self.segmentControl] && [keyPath isEqualToString:@"contentSize"]) {
-        CGSize newSize = [change[NSKeyValueChangeNewKey] CGSizeValue];
-        if (!CGSizeEqualToSize(self.contentSize, newSize)) {
-            self->_contentSize = newSize;
-            
-            [self setNeedsLayout];
-        }
-    }
 }
 
 #pragma mark - SCSegmentControlDataSource
@@ -129,6 +112,17 @@ SCSegmentControlDelegate
 #pragma mark - Delegate
 
 - (void)segmentControl:(UIView *)segmentControl didSelectItemAtIndex:(NSInteger)index {
+    NSLog(@"originFrame: %@", NSStringFromCGRect(self.segmentControl.selectedItemView.frame));
+    CGRect convertFrame = [self.segmentControl.selectedItemView.superview convertRect:self.segmentControl.selectedItemView.frame toView:self.segmentControl];
+    convertFrame = [self.segmentControl convertRect:convertFrame toView:self];
+    
+    NSLog(@"convertFrame: %@", NSStringFromCGRect(convertFrame));
+    [UIView animateWithDuration:0.25 animations:^{
+        CGRect rect = self.indicator.frame;
+        rect.origin.x = convertFrame.origin.x;
+        self.indicator.frame = rect;
+    }];
+    
     if (self.delegate && [self.delegate respondsToSelector:@selector(segmentControl:didSelectItemAtIndex:)]) {
         [self.delegate segmentControl:self didSelectItemAtIndex:index];
     }
@@ -200,6 +194,21 @@ SCSegmentControlDelegate
     self.indicator.backgroundColor = indicatorBackgroundColor;
 }
 
+- (void)setIndicatorLayer:(CALayer *)indicatorLayer {
+    _indicatorLayer = indicatorLayer;
+    self.indicator.indicatorLayer = indicatorLayer;
+}
+
+- (void)setIndicatorImage:(UIImage *)indicatorImage {
+    _indicatorImage = indicatorImage;
+    self.indicator.indicatorImage = indicatorImage;
+}
+
+- (void)setIndicatorImageViewMode:(UIViewContentMode)indicatorImageViewMode {
+    _indicatorImageViewMode = indicatorImageViewMode;
+    self.indicator.indicatorImageViewMode = indicatorImageViewMode;
+}
+
 #pragma mark - Lazy Load
 
 - (SCSegmentControl *)segmentControl {
@@ -211,17 +220,18 @@ SCSegmentControlDelegate
     return _segmentControl;
 }
 
+- (UIScrollView *)indicatorScrollView {
+    if (!_indicatorScrollView) {
+        _indicatorScrollView = [[UIScrollView alloc] init];
+    }
+    return _indicatorScrollView;
+}
+
 - (SCSegmentControlLineIndicator *)indicator {
     if (!_indicator) {
         _indicator = [[SCSegmentControlLineIndicator alloc] init];
     }
     return _indicator;
-}
-
-#pragma mark - Dealloc
-
-- (void)dealloc {
-    [self.segmentControl removeObserver:self forKeyPath:@"contentSize"];
 }
 
 @end

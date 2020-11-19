@@ -26,7 +26,7 @@ SCSegmentControlProtocol
 /// 指示器距离底部的间距，默认为0
 @property (nonatomic, assign) CGFloat indicatorBottomSpace;
 
-/// 指示器的宽度。指示器`indicatorStyle`为`SCTextLineIndicatorStyleRegular`时有效,默认为10
+/// 指示器的宽度。指示器`indicatorStyle`为`SCTextLineIndicatorStyleRegular`时有效,默认为50
 @property (nonatomic, assign) CGFloat indicatorRegularWidth;
 
 /// 指示器宽度宽度展示规则
@@ -37,6 +37,15 @@ SCSegmentControlProtocol
 
 /// 指示器背景颜色,默认orangeColor
 @property (nonatomic, strong) UIColor *indicatorBackgroundColor;
+
+/// 自定义指示器layer
+@property (nonatomic, strong) CALayer *indicatorLayer;
+
+/// 设置指示器内容为图片
+@property (nonatomic, strong) UIImage *indicatorImage;
+
+/// 指示器使用图片时，图片的缩放形式
+@property (nonatomic, assign) UIViewContentMode indicatorImageViewMode;
 
 
 /// 设置指示器的渐变

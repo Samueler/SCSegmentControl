@@ -23,14 +23,28 @@ SCSegmentControlDelegate
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    SCTextLineSegmentControl *control = [[SCTextLineSegmentControl alloc] initWithFrame:CGRectMake(0, 100, self.view.frame.size.width, 44)];
+    SCTextLineSegmentControl *control = [[SCTextLineSegmentControl alloc] initWithFrame:CGRectMake(0, 100, self.view.frame.size.width, 64)];
     control.backgroundColor = UIColor.orangeColor;
-    control.scrollToCenter = YES;
+    control.scrollToCenter = NO;
     control.dataSource = self;
     control.delegate = self;
     control.contentInset = UIEdgeInsetsMake(5, 5, 5, 5);
     [control setupSelectedIndex:10];
     control.indicatorBackgroundColor = UIColor.greenColor;
+//    control.indicatorImage = [UIImage imageNamed:@"waveIndicator"];
+    control.indicatorRegularWidth = 20;
+    control.indicatorHeight = 5;
+    
+    UIBezierPath *indicatorPath = [UIBezierPath bezierPath];
+    [indicatorPath moveToPoint:CGPointZero];
+    [indicatorPath addLineToPoint:CGPointMake(20, 0)];
+    [indicatorPath addLineToPoint:CGPointMake(10, 5)];
+    
+    CAShapeLayer *indicatorLayer = [CAShapeLayer layer];
+    indicatorLayer.fillColor = UIColor.redColor.CGColor;
+    indicatorLayer.path = indicatorPath.CGPath;
+//    control.indicatorLayer = indicatorLayer;
+    
     [control reloadData];
     [self.view addSubview:control];
     self.control = control;

@@ -12,4 +12,6 @@
 SCSegmentControlProtocol
 >
 
+@property (nonatomic, assign, readonly) UIView *selectedItemView;
+    
 @end

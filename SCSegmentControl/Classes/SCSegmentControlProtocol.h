@@ -17,9 +17,6 @@
 /// 指定内容内边距，默认均为0
 @property (nonatomic, assign) UIEdgeInsets contentInset;
 
-/// 可滑动的contentSize
-@property (nonatomic, assign, readonly) CGSize contentSize;
-
 /// 当前选中的item的下标
 @property (nonatomic, assign, readonly) NSInteger currentIndex;
 
