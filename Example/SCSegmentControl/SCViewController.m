@@ -7,14 +7,14 @@
 //
 
 #import "SCViewController.h"
-#import <SCSegmentControl.h>
+#import <SCTextLineSegmentControl.h>
 
 @interface SCViewController () <
 SCSegmentControlDataSource,
 SCSegmentControlDelegate
 >
 
-@property (nonatomic, strong) SCSegmentControl *control;
+@property (nonatomic, strong) SCTextLineSegmentControl *control;
 
 @end
 
@@ -23,40 +23,41 @@ SCSegmentControlDelegate
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    SCSegmentControl *control = [[SCSegmentControl alloc] initWithFrame:CGRectMake(0, 100, self.view.frame.size.width, 44)];
+    SCTextLineSegmentControl *control = [[SCTextLineSegmentControl alloc] initWithFrame:CGRectMake(0, 100, self.view.frame.size.width, 44)];
     control.backgroundColor = UIColor.orangeColor;
     control.scrollToCenter = YES;
     control.dataSource = self;
     control.delegate = self;
     control.contentInset = UIEdgeInsetsMake(5, 5, 5, 5);
     [control setupSelectedIndex:10];
+    control.indicatorBackgroundColor = UIColor.greenColor;
     [control reloadData];
     [self.view addSubview:control];
     self.control = control;
 }
 
-- (NSInteger)numberOfItemsInSegmentControl:(SCSegmentControl *)segmentControl {
+- (NSInteger)numberOfItemsInSegmentControl:(SCTextLineSegmentControl *)segmentControl {
     return 100;
 }
 
-- (UIView *)segmentControl:(SCSegmentControl *)segmentControl itemAtIndex:(NSInteger)index {
+- (UIView *)segmentControl:(SCTextLineSegmentControl *)segmentControl itemAtIndex:(NSInteger)index {
     UILabel *label = [[UILabel alloc] init];
     label.text = [NSString stringWithFormat:@"item:%zd", index];
     label.textAlignment = NSTextAlignmentCenter;
     return label;
 }
 
-- (CGFloat)minimumInteritemSpacingInSegmentControl:(SCSegmentControl *)segmentControl {
+- (CGFloat)minimumInteritemSpacingInSegmentControl:(SCTextLineSegmentControl *)segmentControl {
     return 20;
 }
 
-- (CGFloat)segmentControl:(SCSegmentControl *)segmentControl widthForItemAtIndex:(NSInteger)index {
+- (CGFloat)segmentControl:(SCTextLineSegmentControl *)segmentControl widthForItemAtIndex:(NSInteger)index {
     UILabel *label = (UILabel *)[self segmentControl:segmentControl itemAtIndex:index];
     [label sizeToFit];
     return label.frame.size.width;
 }
 
-- (void)segmentControl:(SCSegmentControl *)segmentControl didSelectItemAtIndex:(NSInteger)index {
+- (void)segmentControl:(SCTextLineSegmentControl *)segmentControl didSelectItemAtIndex:(NSInteger)index {
     NSLog(@"currentIndex: %zd", segmentControl.currentIndex);
 }
 

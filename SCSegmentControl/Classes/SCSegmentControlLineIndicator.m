@@ -9,6 +9,13 @@
 
 @implementation SCSegmentControlLineIndicator
 
+- (instancetype)init {
+    if (self = [super init]) {
+        [self commonInit];
+    }
+    return self;
+}
+
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
         [self commonInit];
@@ -19,7 +26,7 @@
 #pragma mark - Private Functions
 
 - (void)commonInit {
-    
+    self.backgroundColor = [UIColor redColor];
 }
 
 #pragma mark - Lazy Load

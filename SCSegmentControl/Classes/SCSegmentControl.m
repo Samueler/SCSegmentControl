@@ -7,7 +7,6 @@
 
 #import "SCSegmentControl.h"
 #import "SCSegmentControlContainerCell.h"
-#import "SCSegmentControlProgress.h"
 
 static NSString *const kSCSegmentControlContainerCellKey = @"kSCSegmentControlContainerCellKey";
 
@@ -21,17 +20,24 @@ UICollisionBehaviorDelegate
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, assign) NSInteger totalItemCount;
 @property (nonatomic, assign) CGFloat minimumInteritemSpacing;
-@property (nonatomic, strong) UIView *progressView;
 @property (nonatomic, assign) BOOL performedReloadData;
 @property (nonatomic, assign) NSInteger initialSelectedIndex;
+@property (nonatomic, assign) CGSize contentSize;
 
 @end
 
 @implementation SCSegmentControl
 
+@synthesize scrollToCenter = _scrollToCenter;
+@synthesize contentInset = _contentInset;
+@synthesize currentIndex = _currentIndex;
+@synthesize delegate = _delegate;
+@synthesize dataSource = _dataSource;
+
 - (instancetype)init {
     if (self = [super init]) {
         [self commonInit];
+        [self addObserver];
     }
     return self;
 }
@@ -39,6 +45,7 @@ UICollisionBehaviorDelegate
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
         [self commonInit];
+        [self addObserver];
     }
     return self;
 }
@@ -59,14 +66,6 @@ UICollisionBehaviorDelegate
     if (![self.dataSource respondsToSelector:@selector(segmentControl:itemAtIndex:)]) {
         NSAssert(NO, @"SCSegmentControl must confirm SCSegmentControlDataSource and implement required functions!");
         return;
-    }
-    
-    if (!self.progressView) {
-        self.progressView = [[SCSegmentControlProgress alloc] init];
-    }
-    
-    if (![self.subviews containsObject:self.progressView]) {
-        [self addSubview:self.progressView];
     }
     
     [self.collectionView reloadData];
@@ -111,6 +110,17 @@ UICollisionBehaviorDelegate
     _scrollToCenter = YES;
     
     [self addSubview:self.collectionView];
+}
+
+- (void)addObserver {
+    [self.collectionView addObserver:self forKeyPath:@"contentSize" options:NSKeyValueObservingOptionNew context:nil];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
+    if ([object isEqual:self.collectionView] && [keyPath isEqualToString:@"contentSize"]) {
+        CGSize contentSize = [change[NSKeyValueChangeNewKey] CGSizeValue];
+        self.contentSize = contentSize;
+    }
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -207,6 +217,12 @@ UICollisionBehaviorDelegate
         }
     }
     return _collectionView;
+}
+
+#pragma mark - Dealloc
+
+- (void)dealloc {
+    [self.collectionView removeObserver:self forKeyPath:@"contentSize"];
 }
 
 @end

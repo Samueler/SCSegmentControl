@@ -6,31 +6,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SCSegmentControlDataSource.h"
-#import "SCSegmentControlDelegate.h"
+#import "SCSegmentControlProtocol.h"
 
-@interface SCSegmentControl : UIView
-
-/// 指定被点击的item是否滚动至控件中间位置，默认为YES
-@property (nonatomic, assign) BOOL scrollToCenter;
-
-/// 指定内容内边距，默认均为0
-@property (nonatomic, assign) UIEdgeInsets contentInset;
-
-/// 当前选中的item的下标
-@property (nonatomic, assign, readonly) NSInteger currentIndex;
-
-/// SCSegmentControl的一些回调
-@property (nonatomic, weak) id<SCSegmentControlDelegate> delegate;
-
-/// SCSegmentControl的数据源
-@property (nonatomic, weak) id<SCSegmentControlDataSource> dataSource;
-
-/// 刷新数据
-- (void)reloadData;
-
-/// 指定item被选中
-/// @param selectedIndex item的下标
-- (void)setupSelectedIndex:(NSInteger)selectedIndex;
+@interface SCSegmentControl : UIView <
+SCSegmentControlProtocol
+>
 
 @end

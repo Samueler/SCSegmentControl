@@ -12,7 +12,7 @@
 
 @optional
 
-- (void)segmentControl:(SCSegmentControl *)segmentControl didSelectItemAtIndex:(NSInteger)index;
+- (void)segmentControl:(id)segmentControl didSelectItemAtIndex:(NSInteger)index;
 
 @end
 
