@@ -10,7 +10,7 @@
 #import <SCTextLineSegmentControl.h>
 
 @interface SCViewController () <
-SCSegmentControlDataSource,
+SCTextLineSegmentControlProtocol,
 SCSegmentControlDelegate
 >
 
@@ -54,12 +54,12 @@ SCSegmentControlDelegate
     return 100;
 }
 
-- (UIView *)segmentControl:(SCTextLineSegmentControl *)segmentControl itemAtIndex:(NSInteger)index {
-    UILabel *label = [[UILabel alloc] init];
-    label.text = [NSString stringWithFormat:@"item:%zd", index];
-    label.textAlignment = NSTextAlignmentCenter;
-    return label;
-}
+//- (UIView *)segmentControl:(SCTextLineSegmentControl *)segmentControl itemAtIndex:(NSInteger)index {
+//    UILabel *label = [[UILabel alloc] init];
+//    label.text = [NSString stringWithFormat:@"item:%zd", index];
+//    label.textAlignment = NSTextAlignmentCenter;
+//    return label;
+//}
 
 - (CGFloat)minimumInteritemSpacingInSegmentControl:(SCTextLineSegmentControl *)segmentControl {
     return 20;
@@ -73,6 +73,14 @@ SCSegmentControlDelegate
 
 - (void)segmentControl:(SCTextLineSegmentControl *)segmentControl didSelectItemAtIndex:(NSInteger)index {
     NSLog(@"currentIndex: %zd", segmentControl.currentIndex);
+}
+
+- (NSAttributedString *)segmentControl:(UIView *)segmentControl normalItemTitle:(NSString *)title attributeAtIndex:(NSInteger)index {
+    
+}
+
+- (NSAttributedString *)segmentControl:(UIView *)segmentControl selectItemTitle:(NSString *)title attributeAtIndex:(NSInteger)index {
+    
 }
 
 @end

@@ -13,5 +13,7 @@ SCSegmentControlProtocol
 >
 
 @property (nonatomic, assign, readonly) UIView *selectedItemView;
+@property (nonatomic, assign, readonly) CGSize scrollContentSize;
+@property (nonatomic, assign, readonly) CGPoint scrollContentOffset;
     
 @end

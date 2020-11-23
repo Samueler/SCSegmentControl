@@ -22,6 +22,8 @@ UICollisionBehaviorDelegate
 @property (nonatomic, assign) CGFloat minimumInteritemSpacing;
 @property (nonatomic, assign) BOOL performedReloadData;
 @property (nonatomic, assign) NSInteger initialSelectedIndex;
+@property (nonatomic, assign) CGSize scrollContentSize;
+@property (nonatomic, assign) CGPoint scrollContentOffset;
 
 @end
 
@@ -36,6 +38,7 @@ UICollisionBehaviorDelegate
 - (instancetype)init {
     if (self = [super init]) {
         [self commonInit];
+        [self addObserver];
     }
     return self;
 }
@@ -43,6 +46,7 @@ UICollisionBehaviorDelegate
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
         [self commonInit];
+        [self addObserver];
     }
     return self;
 }
@@ -66,10 +70,15 @@ UICollisionBehaviorDelegate
     }
     
     [self.collectionView reloadData];
-    if (!self.performedReloadData) {
-        self.performedReloadData = YES;
-        [self setupSelectedIndex:self.initialSelectedIndex];
-    }
+    
+    [self.collectionView performBatchUpdates:^{
+        [self.collectionView reloadData];
+    } completion:^(BOOL finished) {
+        if (!self.performedReloadData && finished) {
+            self.performedReloadData = YES;
+            [self setupSelectedIndex:self.initialSelectedIndex];
+        }
+    }];
 }
 
 - (void)setupSelectedIndex:(NSInteger)selectedIndex {
@@ -78,19 +87,13 @@ UICollisionBehaviorDelegate
         return;
     }
     
-    dispatch_async(dispatch_get_main_queue(), ^{
-        if (selectedIndex >= self.totalItemCount || selectedIndex < 0 || selectedIndex == self.currentIndex) {
-            return;
-        }
-        
-        NSIndexPath *indexPath = [NSIndexPath indexPathForItem:selectedIndex inSection:0];
-        
-        [self collectionView:self.collectionView didSelectItemAtIndexPath:indexPath];
-        
-        if (self.scrollToCenter) {
-            [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
-        }
-    });
+    if (selectedIndex >= self.totalItemCount || selectedIndex < 0 || selectedIndex == self.currentIndex) {
+        return;
+    }
+    
+    NSIndexPath *indexPath = [NSIndexPath indexPathForItem:selectedIndex inSection:0];
+    
+    [self collectionView:self.collectionView didSelectItemAtIndexPath:indexPath];
 }
 
 #pragma mark - Override Functions
@@ -107,6 +110,21 @@ UICollisionBehaviorDelegate
     _scrollToCenter = YES;
     
     [self addSubview:self.collectionView];
+}
+
+#pragma mark - KVO
+
+- (void)addObserver {
+    [self.collectionView addObserver:self forKeyPath:@"contentSize" options:NSKeyValueObservingOptionNew context:nil];
+    [self.collectionView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew context:nil];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
+    if ([object isEqual:self.collectionView] && [keyPath isEqualToString:@"contentSize"]) {
+        self.scrollContentSize = [change[NSKeyValueChangeNewKey] CGSizeValue];
+    } else if ([object isEqual:self.collectionView] && [keyPath isEqualToString:@"contentOffset"]) {
+        self.scrollContentOffset = [change[NSKeyValueChangeNewKey] CGPointValue];
+    }
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -136,19 +154,31 @@ UICollisionBehaviorDelegate
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    if (self.scrollToCenter) {
-        [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+    [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:self.scrollToCenter ? UICollectionViewScrollPositionCenteredHorizontally : UICollectionViewScrollPositionLeft animated:YES];
+    
+    self->_currentIndex = indexPath.item;
+    
+    self->_selectedItemView = [collectionView cellForItemAtIndexPath:indexPath];
+    
+    if (!self.selectedItemView) {
+        return;
     }
     
-    dispatch_async(dispatch_get_main_queue(), ^{
-        self->_currentIndex = indexPath.item;
-        
-        self->_selectedItemView = [collectionView cellForItemAtIndexPath:indexPath];
-        
-        if (self.delegate && [self.delegate respondsToSelector:@selector(segmentControl:didSelectItemAtIndex:)]) {
-            [self.delegate segmentControl:self didSelectItemAtIndex:self.currentIndex];
-        }
-    });
+    if (self.delegate && [self.delegate respondsToSelector:@selector(segmentControl:didSelectItemAtIndex:)]) {
+        [self.delegate segmentControl:self didSelectItemAtIndex:self.currentIndex];
+    }
+}
+
+- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
+    // 解决设置起始选中下标时，selectedItemView为nil的问题
+    if (self.selectedItemView) {
+        return;
+    }
+    
+    self->_selectedItemView = [self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:self.currentIndex inSection:0]];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(segmentControl:didSelectItemAtIndex:)]) {
+        [self.delegate segmentControl:self didSelectItemAtIndex:self.currentIndex];
+    }
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
@@ -208,6 +238,13 @@ UICollisionBehaviorDelegate
         }
     }
     return _collectionView;
+}
+
+#pragma mark - Dealloc
+
+- (void)dealloc {
+    [self.collectionView removeObserver:self forKeyPath:@"contentSize"];
+    [self.collectionView removeObserver:self forKeyPath:@"contentOffset"];
 }
 
 @end
