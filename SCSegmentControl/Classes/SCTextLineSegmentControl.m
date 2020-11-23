@@ -32,6 +32,7 @@ SCSegmentControlDelegate
 - (instancetype)init {
     if (self = [super init]) {
         [self commonInit];
+        [self addObserver];
     }
     return self;
 }
@@ -39,6 +40,7 @@ SCSegmentControlDelegate
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
         [self commonInit];
+        [self addObserver];
     }
     return self;
 }
@@ -49,7 +51,8 @@ SCSegmentControlDelegate
     [super layoutSubviews];
     
     self.segmentControl.frame = self.bounds;
-    self.indicator.frame = CGRectMake(0, self.frame.size.height - self.indicatorHeight - self.indicatorBottomSpace, self.indicatorRegularWidth, self.indicatorHeight);
+    self.indicatorScrollView.frame = CGRectMake(0, self.frame.size.height - self.indicatorHeight - self.indicatorBottomSpace, self.bounds.size.width, self.indicatorHeight);
+    self.indicator.frame = CGRectMake(0, 0, self.indicatorRegularWidth, self.indicatorHeight);
     self.indicatorGradientLayer.frame = self.indicator.bounds;
 }
 
@@ -88,7 +91,25 @@ SCSegmentControlDelegate
     _indicatorBackgroundColor = UIColor.orangeColor;
     
     [self addSubview:self.segmentControl];
-    [self addSubview:self.indicator];
+    [self addSubview:self.indicatorScrollView];
+    [self.indicatorScrollView addSubview:self.indicator];
+}
+
+#pragma mark - KVO
+
+- (void)addObserver {
+    [self.segmentControl addObserver:self forKeyPath:@"scrollContentSize" options:NSKeyValueObservingOptionNew context:nil];
+    [self.segmentControl addObserver:self forKeyPath:@"scrollContentOffset" options:NSKeyValueObservingOptionNew context:nil];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
+    if ([object isEqual:self.segmentControl] && [keyPath isEqualToString:@"scrollContentSize"]) {
+        CGSize segmentControlContentSize = [change[NSKeyValueChangeNewKey] CGSizeValue];
+        self.indicatorScrollView.contentSize = CGSizeMake(segmentControlContentSize.width, self.indicatorHeight);
+    } else if ([object isEqual:self.segmentControl] && [keyPath isEqualToString:@"scrollContentOffset"]) {
+        CGPoint segmentControlContentOffset = [change[NSKeyValueChangeNewKey] CGPointValue];
+        self.indicatorScrollView.contentOffset = CGPointMake(segmentControlContentOffset.x, 0);
+    }
 }
 
 #pragma mark - SCSegmentControlDataSource
@@ -112,14 +133,9 @@ SCSegmentControlDelegate
 #pragma mark - Delegate
 
 - (void)segmentControl:(UIView *)segmentControl didSelectItemAtIndex:(NSInteger)index {
-    NSLog(@"originFrame: %@", NSStringFromCGRect(self.segmentControl.selectedItemView.frame));
-    CGRect convertFrame = [self.segmentControl.selectedItemView.superview convertRect:self.segmentControl.selectedItemView.frame toView:self.segmentControl];
-    convertFrame = [self.segmentControl convertRect:convertFrame toView:self];
-    
-    NSLog(@"convertFrame: %@", NSStringFromCGRect(convertFrame));
     [UIView animateWithDuration:0.25 animations:^{
         CGRect rect = self.indicator.frame;
-        rect.origin.x = convertFrame.origin.x;
+        rect.origin.x = self.segmentControl.selectedItemView.frame.origin.x + (self.segmentControl.selectedItemView.frame.size.width - self.indicatorRegularWidth) * 0.5;
         self.indicator.frame = rect;
     }];
     
@@ -223,6 +239,10 @@ SCSegmentControlDelegate
 - (UIScrollView *)indicatorScrollView {
     if (!_indicatorScrollView) {
         _indicatorScrollView = [[UIScrollView alloc] init];
+        _indicatorScrollView.backgroundColor = [UIColor redColor];
+        _indicatorScrollView.showsHorizontalScrollIndicator = NO;
+        _indicatorScrollView.bounces = NO;
+        _indicatorScrollView.userInteractionEnabled = NO;
     }
     return _indicatorScrollView;
 }
@@ -232,6 +252,13 @@ SCSegmentControlDelegate
         _indicator = [[SCSegmentControlLineIndicator alloc] init];
     }
     return _indicator;
+}
+
+#pragma mark - Dealloc
+
+- (void)dealloc {
+    [self.segmentControl removeObserver:self forKeyPath:@"scrollContentSize"];
+    [self.segmentControl removeObserver:self forKeyPath:@"scrollContentOffset"];
 }
 
 @end

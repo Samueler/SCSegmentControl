@@ -6,7 +6,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SCSegmentControlProtocol.h"
+#import "SCTextLineSegmentControlProtocol.h"
 
 typedef NS_ENUM(NSUInteger, SCTextLineIndicatorStyle) {
     SCTextLineIndicatorStyleRegular,            // 指示器宽度固定
@@ -14,7 +14,7 @@ typedef NS_ENUM(NSUInteger, SCTextLineIndicatorStyle) {
 };
 
 @interface SCTextLineSegmentControl : UIView <
-SCSegmentControlProtocol
+SCTextLineSegmentControlProtocol
 >
 
 /// 是否隐藏指示器，默认为NO

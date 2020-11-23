@@ -7,20 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		05DA746FDA0A5B2CD6E4EC1876E5E9E9 /* SCSegmentControlLineIndicator.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C6248B55476D43FB2DD2D5FB9F904CB /* SCSegmentControlLineIndicator.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		0C99CA0610D77E390426698F78393D60 /* SCSegmentControlContainerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 41131B57B702C69C7FCED7502E464CC1 /* SCSegmentControlContainerCell.m */; };
-		0F435D8608915B8F2D713C0CE8384347 /* SCSegmentControlLineIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 226B3D0D17A5B1EE56F87A841AB934DA /* SCSegmentControlLineIndicator.m */; };
-		199661967A0A393B677EBAB903E92D3F /* SCSegmentControlDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 57EA1D8E32AC307D40F9A2352E015099 /* SCSegmentControlDelegate.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		3A44D94455478A459DF3165088F546BF /* SCSegmentControlDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 7847CECEBB5632C95DDA6E20775EB946 /* SCSegmentControlDataSource.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		50B8A2B7F1E28EF0F76084E5A7EEBB78 /* SCSegmentControl-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 90E14812945DB4F6771F293F52D01A11 /* SCSegmentControl-dummy.m */; };
-		58EF42640E1B8431127263C09DB74CD6 /* SCSegmentControl.h in Headers */ = {isa = PBXBuildFile; fileRef = 865D36224328588860807480126A7EB0 /* SCSegmentControl.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		6397D9D40B5F1CE09246714868F46FEF /* SCSegmentControlContainerCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 03E622579383E2DA3A3C4C751D90F501 /* SCSegmentControlContainerCell.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		0D1257467AE114867AC578637375E72B /* SCSegmentControlContainerCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 24E0703C2B89BD0E9242C71A9D3D7344 /* SCSegmentControlContainerCell.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		3DCF2C4BD74981320422CB4FF8D8EDDC /* SCSegmentControlDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 49173EB96D389D0A6F94FAD0260B7EEE /* SCSegmentControlDelegate.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		46A17B2A126EE69494D09B401EF54ADC /* SCSegmentControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 52567635609DE0B12C96BC2333EC1652 /* SCSegmentControl.m */; };
+		57B0D5F9D93B7D5C1F18D7D65EC14939 /* SCSegmentControl-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCA58C74A9C85F90761EA3489A29EDE /* SCSegmentControl-dummy.m */; };
+		65B8AF263AFB77F72F57993BC0536964 /* SCSegmentControlLineIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D9CE4DD2138A6702AB3CADBF58174B5 /* SCSegmentControlLineIndicator.m */; };
+		6E7325E8BECE58DF034C61EC08F43F68 /* SCTextLineSegmentControlProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F782A8A23EB11DEA49A2997300828C0 /* SCTextLineSegmentControlProtocol.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		724D7B3718121D95EF060BC5516CE03C /* Pods-SCSegmentControl_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B41E57455B67ED0407968D07CD7F4C8 /* Pods-SCSegmentControl_Tests-dummy.m */; };
-		B5C4DC65D8C29D6AE1207FA99B1D0319 /* SCTextLineSegmentControl.h in Headers */ = {isa = PBXBuildFile; fileRef = 9DCA4187B44A85E8DD20529882424400 /* SCTextLineSegmentControl.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		D4331590F553C76F858AF39BED8E7226 /* SCSegmentControl.m in Sources */ = {isa = PBXBuildFile; fileRef = F09C710BBDBD45523E92F7B5EF951866 /* SCSegmentControl.m */; };
-		E7ABC5D47165D24B5091C87FE52BD3BB /* SCSegmentControlProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = E75F97257C241C1EA65FA4D5C16C67ED /* SCSegmentControlProtocol.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		89056BA589879E63630359296638436D /* SCSegmentControlLineIndicator.h in Headers */ = {isa = PBXBuildFile; fileRef = E2CF2E6FEE3CDC67F997F329E9F50E06 /* SCSegmentControlLineIndicator.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		92955C102C92C8FC1BA02DF6D18B6F74 /* SCSegmentControlProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 9BD31B4B24D82FB89E4484F22525F1DD /* SCSegmentControlProtocol.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		B6B9905F43D5899258B3423FC3436522 /* SCSegmentControl.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F96A66BA5E13B848124148B988B6B35 /* SCSegmentControl.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		E8E610754EA38B4C39419E19B21D56B3 /* Pods-SCSegmentControl_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C24B0D4068FE7C36C9290509084AEF76 /* Pods-SCSegmentControl_Example-dummy.m */; };
-		E9A770A70D228CAEC3323C7CF9C9C818 /* SCTextLineSegmentControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 7036E26C843FD61D9C275F3B85452E57 /* SCTextLineSegmentControl.m */; };
+		EA5E80990B5DC88F966E6F1075A13418 /* SCSegmentControlContainerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B12C2FE93C2B223F63906BDEBABDB9EC /* SCSegmentControlContainerCell.m */; };
+		F0DB060E22CB9A62632500662CB52739 /* SCSegmentControlDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 0C8DA6843B681C1F03E5900B679B5539 /* SCSegmentControlDataSource.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		F1ED02281282B332DA6633D5CF10A140 /* SCTextLineSegmentControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E4FE26E8BB2F6E4530636EB21231A0 /* SCTextLineSegmentControl.m */; };
+		FC77CB79CF6C4E71AD1A447C925C69BB /* SCTextLineSegmentControl.h in Headers */ = {isa = PBXBuildFile; fileRef = 97978F21262B75D0D99C54E915358835 /* SCTextLineSegmentControl.h */; settings = {ATTRIBUTES = (Project, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,49 +42,50 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		03E622579383E2DA3A3C4C751D90F501 /* SCSegmentControlContainerCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SCSegmentControlContainerCell.h; path = SCSegmentControl/Classes/SCSegmentControlContainerCell.h; sourceTree = "<group>"; };
-		095F3F430583F25151748E50EA874616 /* SCSegmentControl.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SCSegmentControl.debug.xcconfig; sourceTree = "<group>"; };
+		0C8DA6843B681C1F03E5900B679B5539 /* SCSegmentControlDataSource.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SCSegmentControlDataSource.h; path = SCSegmentControl/Classes/SCSegmentControlDataSource.h; sourceTree = "<group>"; };
 		1B2FD53696AB5C2A64B1B1F53DC435E9 /* Pods-SCSegmentControl_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SCSegmentControl_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		1C6248B55476D43FB2DD2D5FB9F904CB /* SCSegmentControlLineIndicator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SCSegmentControlLineIndicator.h; path = SCSegmentControl/Classes/SCSegmentControlLineIndicator.h; sourceTree = "<group>"; };
-		226B3D0D17A5B1EE56F87A841AB934DA /* SCSegmentControlLineIndicator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SCSegmentControlLineIndicator.m; path = SCSegmentControl/Classes/SCSegmentControlLineIndicator.m; sourceTree = "<group>"; };
+		1F6D54829105DC8181A34E49B032C68E /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		24E0703C2B89BD0E9242C71A9D3D7344 /* SCSegmentControlContainerCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SCSegmentControlContainerCell.h; path = SCSegmentControl/Classes/SCSegmentControlContainerCell.h; sourceTree = "<group>"; };
+		2BCA58C74A9C85F90761EA3489A29EDE /* SCSegmentControl-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SCSegmentControl-dummy.m"; sourceTree = "<group>"; };
 		2E80FEC8AE2CBD658557C5824904A131 /* Pods-SCSegmentControl_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SCSegmentControl_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
+		2F782A8A23EB11DEA49A2997300828C0 /* SCTextLineSegmentControlProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SCTextLineSegmentControlProtocol.h; path = SCSegmentControl/Classes/SCTextLineSegmentControlProtocol.h; sourceTree = "<group>"; };
+		38E4FE26E8BB2F6E4530636EB21231A0 /* SCTextLineSegmentControl.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SCTextLineSegmentControl.m; path = SCSegmentControl/Classes/SCTextLineSegmentControl.m; sourceTree = "<group>"; };
 		3B41E57455B67ED0407968D07CD7F4C8 /* Pods-SCSegmentControl_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SCSegmentControl_Tests-dummy.m"; sourceTree = "<group>"; };
-		41131B57B702C69C7FCED7502E464CC1 /* SCSegmentControlContainerCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SCSegmentControlContainerCell.m; path = SCSegmentControl/Classes/SCSegmentControlContainerCell.m; sourceTree = "<group>"; };
 		455203CDC8FDB8E6C8964A4C0E0EA81B /* Pods-SCSegmentControl_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SCSegmentControl_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		45CB254456FDD6ED74EEB049E589755A /* libSCSegmentControl.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libSCSegmentControl.a; path = libSCSegmentControl.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		57EA1D8E32AC307D40F9A2352E015099 /* SCSegmentControlDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SCSegmentControlDelegate.h; path = SCSegmentControl/Classes/SCSegmentControlDelegate.h; sourceTree = "<group>"; };
+		49173EB96D389D0A6F94FAD0260B7EEE /* SCSegmentControlDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SCSegmentControlDelegate.h; path = SCSegmentControl/Classes/SCSegmentControlDelegate.h; sourceTree = "<group>"; };
+		49ADC0B251211BD0111F6D9F0018C918 /* SCSegmentControl.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = SCSegmentControl.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		52567635609DE0B12C96BC2333EC1652 /* SCSegmentControl.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SCSegmentControl.m; path = SCSegmentControl/Classes/SCSegmentControl.m; sourceTree = "<group>"; };
+		59E92823E4607B4F366E99C45744B746 /* SCSegmentControl.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SCSegmentControl.release.xcconfig; sourceTree = "<group>"; };
 		5B93CBCA20FFC45B7945393551CCFFA8 /* Pods-SCSegmentControl_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SCSegmentControl_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
-		7036E26C843FD61D9C275F3B85452E57 /* SCTextLineSegmentControl.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SCTextLineSegmentControl.m; path = SCSegmentControl/Classes/SCTextLineSegmentControl.m; sourceTree = "<group>"; };
-		71890A3701A390FE2A163F11F858670C /* SCSegmentControl.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = SCSegmentControl.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		7847CECEBB5632C95DDA6E20775EB946 /* SCSegmentControlDataSource.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SCSegmentControlDataSource.h; path = SCSegmentControl/Classes/SCSegmentControlDataSource.h; sourceTree = "<group>"; };
+		5F96A66BA5E13B848124148B988B6B35 /* SCSegmentControl.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SCSegmentControl.h; path = SCSegmentControl/Classes/SCSegmentControl.h; sourceTree = "<group>"; };
+		6E2A9AC61EA59761AA4F58B5512469FC /* SCSegmentControl.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SCSegmentControl.debug.xcconfig; sourceTree = "<group>"; };
 		7D4D0A3D5E8E8DE278982C0874361A02 /* libPods-SCSegmentControl_Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-SCSegmentControl_Example.a"; path = "libPods-SCSegmentControl_Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		865D36224328588860807480126A7EB0 /* SCSegmentControl.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SCSegmentControl.h; path = SCSegmentControl/Classes/SCSegmentControl.h; sourceTree = "<group>"; };
-		90E14812945DB4F6771F293F52D01A11 /* SCSegmentControl-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SCSegmentControl-dummy.m"; sourceTree = "<group>"; };
-		98EF0B793A34FB6A12D57D27160247B9 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		7D9CE4DD2138A6702AB3CADBF58174B5 /* SCSegmentControlLineIndicator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SCSegmentControlLineIndicator.m; path = SCSegmentControl/Classes/SCSegmentControlLineIndicator.m; sourceTree = "<group>"; };
+		97978F21262B75D0D99C54E915358835 /* SCTextLineSegmentControl.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SCTextLineSegmentControl.h; path = SCSegmentControl/Classes/SCTextLineSegmentControl.h; sourceTree = "<group>"; };
+		9BD31B4B24D82FB89E4484F22525F1DD /* SCSegmentControlProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SCSegmentControlProtocol.h; path = SCSegmentControl/Classes/SCSegmentControlProtocol.h; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		9DCA4187B44A85E8DD20529882424400 /* SCTextLineSegmentControl.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SCTextLineSegmentControl.h; path = SCSegmentControl/Classes/SCTextLineSegmentControl.h; sourceTree = "<group>"; };
 		AA5265B10815CC0711D1895E0E3A0251 /* libPods-SCSegmentControl_Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-SCSegmentControl_Tests.a"; path = "libPods-SCSegmentControl_Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF12578A8578BC92EAFFE71E76FA3DB5 /* Pods-SCSegmentControl_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SCSegmentControl_Example.release.xcconfig"; sourceTree = "<group>"; };
-		B32AB38DB274FD45468379F87E34BAFD /* SCSegmentControl.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SCSegmentControl.release.xcconfig; sourceTree = "<group>"; };
+		B12C2FE93C2B223F63906BDEBABDB9EC /* SCSegmentControlContainerCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SCSegmentControlContainerCell.m; path = SCSegmentControl/Classes/SCSegmentControlContainerCell.m; sourceTree = "<group>"; };
+		B84BE5BFF9D0E7196CC713EC398FD762 /* SCSegmentControl-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SCSegmentControl-prefix.pch"; sourceTree = "<group>"; };
 		C24B0D4068FE7C36C9290509084AEF76 /* Pods-SCSegmentControl_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SCSegmentControl_Example-dummy.m"; sourceTree = "<group>"; };
 		C2CC33BB539E1DE9D9C0325EEB08BA3C /* Pods-SCSegmentControl_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SCSegmentControl_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		D42625EF1D2CD997CE873E2F973E293B /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
-		E03682F30A52DCB418CE1F6161137599 /* SCSegmentControl-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SCSegmentControl-prefix.pch"; sourceTree = "<group>"; };
-		E75F97257C241C1EA65FA4D5C16C67ED /* SCSegmentControlProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SCSegmentControlProtocol.h; path = SCSegmentControl/Classes/SCSegmentControlProtocol.h; sourceTree = "<group>"; };
+		DC7F444B80A84E623F97CF7AB3145E5E /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		E2CF2E6FEE3CDC67F997F329E9F50E06 /* SCSegmentControlLineIndicator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SCSegmentControlLineIndicator.h; path = SCSegmentControl/Classes/SCSegmentControlLineIndicator.h; sourceTree = "<group>"; };
 		E9C215B2C4110ACD7704957E3BBF8CCE /* Pods-SCSegmentControl_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SCSegmentControl_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		F09C710BBDBD45523E92F7B5EF951866 /* SCSegmentControl.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SCSegmentControl.m; path = SCSegmentControl/Classes/SCSegmentControl.m; sourceTree = "<group>"; };
 		FC2122964DB482ADCDFFB53B4DB89FD4 /* Pods-SCSegmentControl_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SCSegmentControl_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		17CD09ED691108E9EA3ABAC7A850B505 /* Frameworks */ = {
+		89D9481A61CB969B190FCD535BBBCE33 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		89D9481A61CB969B190FCD535BBBCE33 /* Frameworks */ = {
+		CF0F2C7EC2D2F3E00136FF3DD5699AD1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -100,6 +102,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		10A4BB0B2BBF746DD63D1EE39DF4D8C4 /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				140F00EAC7E7A8827B37CF6B141C0F13 /* SCSegmentControl */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		140F00EAC7E7A8827B37CF6B141C0F13 /* SCSegmentControl */ = {
+			isa = PBXGroup;
+			children = (
+				5F96A66BA5E13B848124148B988B6B35 /* SCSegmentControl.h */,
+				52567635609DE0B12C96BC2333EC1652 /* SCSegmentControl.m */,
+				24E0703C2B89BD0E9242C71A9D3D7344 /* SCSegmentControlContainerCell.h */,
+				B12C2FE93C2B223F63906BDEBABDB9EC /* SCSegmentControlContainerCell.m */,
+				0C8DA6843B681C1F03E5900B679B5539 /* SCSegmentControlDataSource.h */,
+				49173EB96D389D0A6F94FAD0260B7EEE /* SCSegmentControlDelegate.h */,
+				E2CF2E6FEE3CDC67F997F329E9F50E06 /* SCSegmentControlLineIndicator.h */,
+				7D9CE4DD2138A6702AB3CADBF58174B5 /* SCSegmentControlLineIndicator.m */,
+				9BD31B4B24D82FB89E4484F22525F1DD /* SCSegmentControlProtocol.h */,
+				97978F21262B75D0D99C54E915358835 /* SCTextLineSegmentControl.h */,
+				38E4FE26E8BB2F6E4530636EB21231A0 /* SCTextLineSegmentControl.m */,
+				2F782A8A23EB11DEA49A2997300828C0 /* SCTextLineSegmentControlProtocol.h */,
+				701C7336C14AB7B5B77B572DC1C4AEF6 /* Pod */,
+				88BA5DE7C0733D24BD07671CE3C0790A /* Support Files */,
+			);
+			name = SCSegmentControl;
+			path = ../..;
+			sourceTree = "<group>";
+		};
 		48EC2E131DA194388CBC028F7BC11DCA /* Pods-SCSegmentControl_Example */ = {
 			isa = PBXGroup;
 			children = (
@@ -122,26 +154,26 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		5F61CD9919D21F5C48A2827731BF1E7C /* Support Files */ = {
+		701C7336C14AB7B5B77B572DC1C4AEF6 /* Pod */ = {
 			isa = PBXGroup;
 			children = (
-				90E14812945DB4F6771F293F52D01A11 /* SCSegmentControl-dummy.m */,
-				E03682F30A52DCB418CE1F6161137599 /* SCSegmentControl-prefix.pch */,
-				095F3F430583F25151748E50EA874616 /* SCSegmentControl.debug.xcconfig */,
-				B32AB38DB274FD45468379F87E34BAFD /* SCSegmentControl.release.xcconfig */,
+				DC7F444B80A84E623F97CF7AB3145E5E /* LICENSE */,
+				1F6D54829105DC8181A34E49B032C68E /* README.md */,
+				49ADC0B251211BD0111F6D9F0018C918 /* SCSegmentControl.podspec */,
+			);
+			name = Pod;
+			sourceTree = "<group>";
+		};
+		88BA5DE7C0733D24BD07671CE3C0790A /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				2BCA58C74A9C85F90761EA3489A29EDE /* SCSegmentControl-dummy.m */,
+				B84BE5BFF9D0E7196CC713EC398FD762 /* SCSegmentControl-prefix.pch */,
+				6E2A9AC61EA59761AA4F58B5512469FC /* SCSegmentControl.debug.xcconfig */,
+				59E92823E4607B4F366E99C45744B746 /* SCSegmentControl.release.xcconfig */,
 			);
 			name = "Support Files";
 			path = "Example/Pods/Target Support Files/SCSegmentControl";
-			sourceTree = "<group>";
-		};
-		829F049F300204AA7FBDCF4920B3EA4E /* Pod */ = {
-			isa = PBXGroup;
-			children = (
-				D42625EF1D2CD997CE873E2F973E293B /* LICENSE */,
-				98EF0B793A34FB6A12D57D27160247B9 /* README.md */,
-				71890A3701A390FE2A163F11F858670C /* SCSegmentControl.podspec */,
-			);
-			name = Pod;
 			sourceTree = "<group>";
 		};
 		A6AAB0FF841DBE30634F8A95A63CE53F /* Products */ = {
@@ -152,14 +184,6 @@
 				45CB254456FDD6ED74EEB049E589755A /* libSCSegmentControl.a */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		BD13F97851DB80D6DEC6AB1047D220F3 /* Development Pods */ = {
-			isa = PBXGroup;
-			children = (
-				EFCC3FCDB04B62962DBDFB51956FF537 /* SCSegmentControl */,
-			);
-			name = "Development Pods";
 			sourceTree = "<group>";
 		};
 		C353B8483797D0C2E07E536C92C044DA /* Pods-SCSegmentControl_Tests */ = {
@@ -179,7 +203,7 @@
 			isa = PBXGroup;
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
-				BD13F97851DB80D6DEC6AB1047D220F3 /* Development Pods */,
+				10A4BB0B2BBF746DD63D1EE39DF4D8C4 /* Development Pods */,
 				D89477F20FB1DE18A04690586D7808C4 /* Frameworks */,
 				A6AAB0FF841DBE30634F8A95A63CE53F /* Products */,
 				5ED6750BD637E31368FF5BCAF1F918E2 /* Targets Support Files */,
@@ -193,41 +217,21 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		EFCC3FCDB04B62962DBDFB51956FF537 /* SCSegmentControl */ = {
-			isa = PBXGroup;
-			children = (
-				865D36224328588860807480126A7EB0 /* SCSegmentControl.h */,
-				F09C710BBDBD45523E92F7B5EF951866 /* SCSegmentControl.m */,
-				03E622579383E2DA3A3C4C751D90F501 /* SCSegmentControlContainerCell.h */,
-				41131B57B702C69C7FCED7502E464CC1 /* SCSegmentControlContainerCell.m */,
-				7847CECEBB5632C95DDA6E20775EB946 /* SCSegmentControlDataSource.h */,
-				57EA1D8E32AC307D40F9A2352E015099 /* SCSegmentControlDelegate.h */,
-				1C6248B55476D43FB2DD2D5FB9F904CB /* SCSegmentControlLineIndicator.h */,
-				226B3D0D17A5B1EE56F87A841AB934DA /* SCSegmentControlLineIndicator.m */,
-				E75F97257C241C1EA65FA4D5C16C67ED /* SCSegmentControlProtocol.h */,
-				9DCA4187B44A85E8DD20529882424400 /* SCTextLineSegmentControl.h */,
-				7036E26C843FD61D9C275F3B85452E57 /* SCTextLineSegmentControl.m */,
-				829F049F300204AA7FBDCF4920B3EA4E /* Pod */,
-				5F61CD9919D21F5C48A2827731BF1E7C /* Support Files */,
-			);
-			name = SCSegmentControl;
-			path = ../..;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		7891BF19632A1F7E7EFAB6D8E1D47D31 /* Headers */ = {
+		ADE991C4CC7BFAB1C8843C8932FB329A /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				58EF42640E1B8431127263C09DB74CD6 /* SCSegmentControl.h in Headers */,
-				6397D9D40B5F1CE09246714868F46FEF /* SCSegmentControlContainerCell.h in Headers */,
-				3A44D94455478A459DF3165088F546BF /* SCSegmentControlDataSource.h in Headers */,
-				199661967A0A393B677EBAB903E92D3F /* SCSegmentControlDelegate.h in Headers */,
-				05DA746FDA0A5B2CD6E4EC1876E5E9E9 /* SCSegmentControlLineIndicator.h in Headers */,
-				E7ABC5D47165D24B5091C87FE52BD3BB /* SCSegmentControlProtocol.h in Headers */,
-				B5C4DC65D8C29D6AE1207FA99B1D0319 /* SCTextLineSegmentControl.h in Headers */,
+				B6B9905F43D5899258B3423FC3436522 /* SCSegmentControl.h in Headers */,
+				0D1257467AE114867AC578637375E72B /* SCSegmentControlContainerCell.h in Headers */,
+				F0DB060E22CB9A62632500662CB52739 /* SCSegmentControlDataSource.h in Headers */,
+				3DCF2C4BD74981320422CB4FF8D8EDDC /* SCSegmentControlDelegate.h in Headers */,
+				89056BA589879E63630359296638436D /* SCSegmentControlLineIndicator.h in Headers */,
+				92955C102C92C8FC1BA02DF6D18B6F74 /* SCSegmentControlProtocol.h in Headers */,
+				FC77CB79CF6C4E71AD1A447C925C69BB /* SCTextLineSegmentControl.h in Headers */,
+				6E7325E8BECE58DF034C61EC08F43F68 /* SCTextLineSegmentControlProtocol.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,11 +272,11 @@
 		};
 		4A8B0BE200B12ACFA7707F45FE01B283 /* SCSegmentControl */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B0C0794F940BEDFDAAC82268C23FDB05 /* Build configuration list for PBXNativeTarget "SCSegmentControl" */;
+			buildConfigurationList = D0391CF6E268EE34A9FEC7BBA20D59B5 /* Build configuration list for PBXNativeTarget "SCSegmentControl" */;
 			buildPhases = (
-				7891BF19632A1F7E7EFAB6D8E1D47D31 /* Headers */,
-				AE96D2DE1774A0FFFCC428075BA471D0 /* Sources */,
-				17CD09ED691108E9EA3ABAC7A850B505 /* Frameworks */,
+				ADE991C4CC7BFAB1C8843C8932FB329A /* Headers */,
+				993A9C1EE84EA0BCF8E4E77B793B161F /* Sources */,
+				CF0F2C7EC2D2F3E00136FF3DD5699AD1 /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -339,15 +343,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AE96D2DE1774A0FFFCC428075BA471D0 /* Sources */ = {
+		993A9C1EE84EA0BCF8E4E77B793B161F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				50B8A2B7F1E28EF0F76084E5A7EEBB78 /* SCSegmentControl-dummy.m in Sources */,
-				D4331590F553C76F858AF39BED8E7226 /* SCSegmentControl.m in Sources */,
-				0C99CA0610D77E390426698F78393D60 /* SCSegmentControlContainerCell.m in Sources */,
-				0F435D8608915B8F2D713C0CE8384347 /* SCSegmentControlLineIndicator.m in Sources */,
-				E9A770A70D228CAEC3323C7CF9C9C818 /* SCTextLineSegmentControl.m in Sources */,
+				57B0D5F9D93B7D5C1F18D7D65EC14939 /* SCSegmentControl-dummy.m in Sources */,
+				46A17B2A126EE69494D09B401EF54ADC /* SCSegmentControl.m in Sources */,
+				EA5E80990B5DC88F966E6F1075A13418 /* SCSegmentControlContainerCell.m in Sources */,
+				65B8AF263AFB77F72F57993BC0536964 /* SCSegmentControlLineIndicator.m in Sources */,
+				F1ED02281282B332DA6633D5CF10A140 /* SCTextLineSegmentControl.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -399,6 +403,31 @@
 			};
 			name = Release;
 		};
+		0D0DF11C6B394E1CA20065E1E4C9F912 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 59E92823E4607B4F366E99C45744B746 /* SCSegmentControl.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/SCSegmentControl/SCSegmentControl-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = SCSegmentControl;
+				PRODUCT_NAME = SCSegmentControl;
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		2466AF40AA8C800EA9FB397D37FA835B /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E9C215B2C4110ACD7704957E3BBF8CCE /* Pods-SCSegmentControl_Tests.release.xcconfig */;
@@ -420,6 +449,30 @@
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
+		};
+		325A1FB65B3F916D5E8BFEA6092A5AB4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6E2A9AC61EA59761AA4F58B5512469FC /* SCSegmentControl.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/SCSegmentControl/SCSegmentControl-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = SCSegmentControl;
+				PRODUCT_NAME = SCSegmentControl;
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
 		};
 		49EE9554D016CDCCAAC30FBCA740B3A8 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -566,31 +619,6 @@
 			};
 			name = Debug;
 		};
-		ADD3B2BFE44B9E0EF49D9362D9A15DAA /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = B32AB38DB274FD45468379F87E34BAFD /* SCSegmentControl.release.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				GCC_PREFIX_HEADER = "Target Support Files/SCSegmentControl/SCSegmentControl-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_MODULE_NAME = SCSegmentControl;
-				PRODUCT_NAME = SCSegmentControl;
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
 		CB8706C99D17B0A66A6925A347437880 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C2CC33BB539E1DE9D9C0325EEB08BA3C /* Pods-SCSegmentControl_Tests.debug.xcconfig */;
@@ -608,30 +636,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		D96E40DB2803398195EAA5EC6F70D066 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 095F3F430583F25151748E50EA874616 /* SCSegmentControl.debug.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				GCC_PREFIX_HEADER = "Target Support Files/SCSegmentControl/SCSegmentControl-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_MODULE_NAME = SCSegmentControl;
-				PRODUCT_NAME = SCSegmentControl;
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -657,11 +661,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B0C0794F940BEDFDAAC82268C23FDB05 /* Build configuration list for PBXNativeTarget "SCSegmentControl" */ = {
+		D0391CF6E268EE34A9FEC7BBA20D59B5 /* Build configuration list for PBXNativeTarget "SCSegmentControl" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D96E40DB2803398195EAA5EC6F70D066 /* Debug */,
-				ADD3B2BFE44B9E0EF49D9362D9A15DAA /* Release */,
+				325A1FB65B3F916D5E8BFEA6092A5AB4 /* Debug */,
+				0D0DF11C6B394E1CA20065E1E4C9F912 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
