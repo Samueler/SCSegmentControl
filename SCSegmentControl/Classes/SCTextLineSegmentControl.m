@@ -33,14 +33,6 @@ SCSegmentControlDelegate
 @synthesize delegate = _delegate;
 @synthesize dataSource = _dataSource;
 
-- (instancetype)init {
-    if (self = [super init]) {
-        [self commonInit];
-        [self addObserver];
-    }
-    return self;
-}
-
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
         [self commonInit];
