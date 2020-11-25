@@ -24,7 +24,7 @@ SCSegmentControlDelegate
     [super viewDidLoad];
     
     SCTextLineSegmentControl *control = [[SCTextLineSegmentControl alloc] initWithFrame:CGRectMake(0, 100, self.view.frame.size.width, 70)];
-//    control.backgroundColor = UIColor.purpleColor;
+    control.backgroundColor = UIColor.lightGrayColor;
     control.scrollToCenter = NO;
     control.dataSource = self;
     control.delegate = self;
