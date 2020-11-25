@@ -2,7 +2,7 @@
 //  SCSegmentControlFlowLayout.m
 //  SCSegmentControl
 //
-//  Created by 妈妈网 on 2020/11/24.
+//  Created by ty.Chen on 2020/11/24.
 //
 
 #import "SCSegmentControlFlowLayout.h"
