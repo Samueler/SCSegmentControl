@@ -8,6 +8,7 @@
 
 #import "SCViewController.h"
 #import <SCTextLineSegmentControl.h>
+#import <Masonry/Masonry.h>
 
 @interface SCViewController () <
 SCSegmentControlDataSource,
@@ -23,7 +24,8 @@ SCSegmentControlDelegate
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    SCTextLineSegmentControl *control = [[SCTextLineSegmentControl alloc] initWithFrame:CGRectMake(0, 100, self.view.frame.size.width, 70)];
+//    SCTextLineSegmentControl *control = [[SCTextLineSegmentControl alloc] initWithFrame:CGRectMake(0, 100, self.view.frame.size.width, 70)];
+    SCTextLineSegmentControl *control = [[SCTextLineSegmentControl alloc] init];
     control.backgroundColor = UIColor.lightGrayColor;
     control.scrollToCenter = NO;
     control.dataSource = self;
@@ -64,6 +66,11 @@ SCSegmentControlDelegate
     control.indicatorView = indicatorLabel;
     
     [self.view addSubview:control];
+    [control mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view.mas_top).offset(100);
+        make.left.right.equalTo(self.view);
+        make.height.mas_equalTo(70);
+    }];
     self.control = control;
     [self.control processDataSource];
 }

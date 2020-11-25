@@ -1,16 +1,23 @@
 PODS:
+  - Masonry (1.1.0)
   - SCSegmentControl (1.0.0)
 
 DEPENDENCIES:
+  - Masonry (~> 1.1.0)
   - SCSegmentControl (from `../`)
+
+SPEC REPOS:
+  trunk:
+    - Masonry
 
 EXTERNAL SOURCES:
   SCSegmentControl:
     :path: "../"
 
 SPEC CHECKSUMS:
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   SCSegmentControl: 79afeb55ec0031ce38e31a263076414c4b59f7ef
 
-PODFILE CHECKSUM: f189c4990ed36886cdb4d0b3557dfa67cbeea2cc
+PODFILE CHECKSUM: c73a83c9accd7f76378f72c54923858843cc8c97
 
 COCOAPODS: 1.9.2
