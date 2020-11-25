@@ -56,6 +56,9 @@ SCSegmentControlProtocol
 /// 自定义指示器layer
 @property (nonatomic, strong) CALayer *indicatorLayer;
 
+/// 自定义指示器view
+@property (nonatomic, strong) UIView *indicatorView;
+
 /// 设置指示器内容为图片
 @property (nonatomic, strong) UIImage *indicatorImage;
 

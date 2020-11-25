@@ -23,7 +23,7 @@ SCSegmentControlDelegate
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    SCTextLineSegmentControl *control = [[SCTextLineSegmentControl alloc] initWithFrame:CGRectMake(0, 100, self.view.frame.size.width, 64)];
+    SCTextLineSegmentControl *control = [[SCTextLineSegmentControl alloc] initWithFrame:CGRectMake(0, 100, self.view.frame.size.width, 70)];
 //    control.backgroundColor = UIColor.purpleColor;
     control.scrollToCenter = NO;
     control.dataSource = self;
@@ -34,7 +34,7 @@ SCSegmentControlDelegate
 //    control.indicatorImage = [UIImage imageNamed:@"waveIndicator"];
     control.indicatorStyle = SCTextLineIndicatorStyleFollowContent;
     control.indicatorRegularWidth = 20;
-    control.indicatorHeight = 5;
+    control.indicatorHeight = 10;
     control.selectItemTitleColor = UIColor.redColor;
     control.selectItemTitleFont = [UIFont boldSystemFontOfSize:25];
     control.normalItemTitleColor = UIColor.orangeColor;
@@ -55,6 +55,13 @@ SCSegmentControlDelegate
     indicatorLayer.fillColor = UIColor.redColor.CGColor;
     indicatorLayer.path = indicatorPath.CGPath;
 //    control.indicatorLayer = indicatorLayer;
+    
+    UILabel *indicatorLabel = [[UILabel alloc] init];
+    indicatorLabel.text = @"indicator";
+    indicatorLabel.font = [UIFont systemFontOfSize:10];
+    indicatorLabel.textAlignment = NSTextAlignmentCenter;
+    indicatorLabel.textColor = UIColor.redColor;
+    control.indicatorView = indicatorLabel;
     
     [self.view addSubview:control];
     self.control = control;

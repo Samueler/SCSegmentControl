@@ -285,6 +285,11 @@ SCSegmentControlDelegate
     self.indicator.indicatorLayer = indicatorLayer;
 }
 
+- (void)setIndicatorView:(UIView *)indicatorView {
+    _indicatorView = indicatorView;
+    self.indicator.indicatorView = indicatorView;
+}
+
 - (void)setIndicatorImage:(UIImage *)indicatorImage {
     _indicatorImage = indicatorImage;
     self.indicator.indicatorImage = indicatorImage;

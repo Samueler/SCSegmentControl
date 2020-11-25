@@ -35,6 +35,7 @@
     [super layoutSubviews];
     
     self.indicatorImageView.frame = self.bounds;
+    self.indicatorView.frame = self.bounds;
 }
 
 #pragma mark - Private Functions
@@ -57,6 +58,13 @@
     [self.layer addSublayer:indicatorLayer];
     if (CGRectEqualToRect(CGRectZero, indicatorLayer.frame)) {
         indicatorLayer.frame = self.bounds;
+    }
+}
+
+- (void)setIndicatorView:(UIView *)indicatorView {
+    _indicatorView = indicatorView;
+    if (![self.subviews containsObject:indicatorView]) {
+        [self addSubview:indicatorView];
     }
 }
 
