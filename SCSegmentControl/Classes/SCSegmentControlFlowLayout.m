@@ -30,7 +30,7 @@
             NSIndexPath *indexPath = [NSIndexPath indexPathForItem:index inSection:0];
             
             UICollectionViewLayoutAttributes *originAttribute = [self layoutAttributesForItemAtIndexPath:indexPath];
-            CGRect attributeFrame = CGRectMake(index ? CGRectGetMaxX(previousAttributes.frame) + self.itemSpacing : 0, 0, originAttribute.frame.size.width, self.collectionView.frame.size.height);
+            CGRect attributeFrame = CGRectMake(index ? CGRectGetMaxX(previousAttributes.frame) + self.itemSpacing : 0, 0, originAttribute.frame.size.width, self.collectionView.frame.size.height - self.collectionView.contentInset.top - self.collectionView.contentInset.bottom);
 
             UICollectionViewLayoutAttributes *attribute = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];
             attribute.frame = attributeFrame;

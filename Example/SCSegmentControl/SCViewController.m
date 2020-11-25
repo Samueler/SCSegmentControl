@@ -28,7 +28,7 @@ SCSegmentControlDelegate
     control.scrollToCenter = NO;
     control.dataSource = self;
     control.delegate = self;
-//    control.contentInset = UIEdgeInsetsMake(15, 5, 15, 5);
+    control.contentInset = UIEdgeInsetsMake(15, 5, 15, 5);
 //    [control setupSelectedIndex:10];
     control.indicatorBackgroundColor = UIColor.greenColor;
 //    control.indicatorImage = [UIImage imageNamed:@"waveIndicator"];
