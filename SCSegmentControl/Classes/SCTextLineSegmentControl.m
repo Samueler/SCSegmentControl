@@ -8,6 +8,10 @@
 #import "SCTextLineSegmentControl.h"
 #import "SCSegmentControl.h"
 #import "SCSegmentControlLineIndicator.h"
+#import "NSArray+SCSafeArray.h"
+#import "SCTextLineSegmentCell.h"
+
+static NSString *const kSCTextLineSegmentCellKey = @"kSCTextLineSegmentCellKey";
 
 @interface SCTextLineSegmentControl () <
 SCSegmentControlDataSource,
@@ -75,6 +79,10 @@ SCSegmentControlDelegate
 
 #pragma mark - SCSegmentControlProtocol
 
+- (void)processDataSource {
+    [self.segmentControl processDataSource];
+}
+
 - (void)reloadData {
     [self.segmentControl reloadData];
 }
@@ -83,9 +91,25 @@ SCSegmentControlDelegate
     [self.segmentControl setupSelectedIndex:selectedIndex];
 }
 
+- (void)registerNib:(UINib *)nib forSegmentControlItemWithReuseIdentifier:(NSString *)identifier {
+    [self.segmentControl registerNib:nib forSegmentControlItemWithReuseIdentifier:identifier];
+}
+
+- (void)registerClass:(Class)cellClass forSegmentControlItemWithReuseIdentifier:(NSString *)identifier {
+    [self.segmentControl registerClass:cellClass forSegmentControlItemWithReuseIdentifier:identifier];
+}
+
+- (UICollectionViewCell *)dequeueReusableSegmentControlItemWithReuseIdentifier:(NSString *)identifier forIndex:(NSInteger)index {
+    return [self.segmentControl dequeueReusableSegmentControlItemWithReuseIdentifier:identifier forIndex:index];
+}
+
 #pragma mark - Private Functions
 
 - (void)commonInit {
+    _normalItemTitleFont = [UIFont systemFontOfSize:15];
+    _normalItemTitleColor = UIColor.blackColor;
+    _selectItemTitleFont = [UIFont boldSystemFontOfSize:20];
+    _selectItemTitleColor = UIColor.orangeColor;
     _indicatorHeight = 4;
     _indicatorRegularWidth = 50;
     _indicatorBackgroundColor = UIColor.orangeColor;
@@ -118,29 +142,58 @@ SCSegmentControlDelegate
     return [self.dataSource numberOfItemsInSegmentControl:self];
 }
 
-- (UIView *)segmentControl:(UIView *)segmentControl itemAtIndex:(NSInteger)index {
-    return [self.dataSource segmentControl:self itemAtIndex:index];
+- (UICollectionViewCell *)segmentControl:(UIView *)segmentControl cellForItemAtIndex:(NSInteger)index {
+    if (self.dataSource && [self.dataSource respondsToSelector:@selector(segmentControl:cellForItemAtIndex:)]) {
+        return [self.dataSource segmentControl:self cellForItemAtIndex:index];
+    }
+    
+    SCTextLineSegmentCell *textLineCell = (SCTextLineSegmentCell *)[self.segmentControl dequeueReusableSegmentControlItemWithReuseIdentifier:kSCTextLineSegmentCellKey forIndex:index];
+    textLineCell.titleLabel.text = [self.titles sc_safeObjectAtIndex:index];
+    BOOL isSelectedItem = self.segmentControl.currentIndex == index;
+    textLineCell.titleLabel.font = isSelectedItem ? self.selectItemTitleFont : self.normalItemTitleFont;
+    textLineCell.titleLabel.textColor = isSelectedItem ? self.selectItemTitleColor : self.normalItemTitleColor;
+    
+    if (self.currentIndex == index) {
+        [UIView animateWithDuration:0.25 animations:^{
+            CGRect rect = self.indicator.frame;
+            rect.origin.x = textLineCell.frame.origin.x + (textLineCell.frame.size.width - self.indicatorRegularWidth) * 0.5;
+            self.indicator.frame = rect;
+        }];
+    }
+    
+    return textLineCell;
 }
 
-- (CGFloat)minimumInteritemSpacingInSegmentControl:(id)segmentControl {
-    return [self.dataSource minimumInteritemSpacingInSegmentControl:self];
+- (CGFloat)itemSpacingInSegmentControl:(UIView *)segmentControl {
+    if (self.dataSource && [self.dataSource respondsToSelector:@selector(itemSpacingInSegmentControl:)]) {
+        return [self.dataSource itemSpacingInSegmentControl:self];
+    }
+    
+    return 0;
 }
 
 - (CGFloat)segmentControl:(UIView *)segmentControl widthForItemAtIndex:(NSInteger)index {
-    return [self.dataSource segmentControl:self widthForItemAtIndex:index];
+    if (self.dataSource && [self.dataSource respondsToSelector:@selector(segmentControl:widthForItemAtIndex:)]) {
+        return [self.dataSource segmentControl:self widthForItemAtIndex:index];
+    }
+    
+    NSString *title = [self.titles sc_safeObjectAtIndex:index];
+    if (!title) {
+        return 0;
+    }
+    
+    CGFloat width = ceil([title boundingRectWithSize:CGSizeMake(0, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName : self.segmentControl.currentIndex == index ? self.selectItemTitleFont : self.normalItemTitleFont} context:nil].size.width);
+    
+    return width;
 }
 
 #pragma mark - Delegate
 
-- (void)segmentControl:(UIView *)segmentControl didSelectItemAtIndex:(NSInteger)index {
-    [UIView animateWithDuration:0.25 animations:^{
-        CGRect rect = self.indicator.frame;
-        rect.origin.x = self.segmentControl.selectedItemView.frame.origin.x + (self.segmentControl.selectedItemView.frame.size.width - self.indicatorRegularWidth) * 0.5;
-        self.indicator.frame = rect;
-    }];
+- (void)segmentControl:(UIView *)segmentControl didSelectItemAtIndex:(NSInteger)currentItemIndex {
     
+    [self.segmentControl reloadData];
     if (self.delegate && [self.delegate respondsToSelector:@selector(segmentControl:didSelectItemAtIndex:)]) {
-        [self.delegate segmentControl:self didSelectItemAtIndex:index];
+        [self.delegate segmentControl:self didSelectItemAtIndex:currentItemIndex];
     }
 }
 
@@ -232,6 +285,7 @@ SCSegmentControlDelegate
         _segmentControl = [[SCSegmentControl alloc] init];
         _segmentControl.dataSource = self;
         _segmentControl.delegate = self;
+        [_segmentControl registerClass:[SCTextLineSegmentCell class] forSegmentControlItemWithReuseIdentifier:kSCTextLineSegmentCellKey];
     }
     return _segmentControl;
 }

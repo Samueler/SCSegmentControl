@@ -10,7 +10,7 @@
 #import <SCTextLineSegmentControl.h>
 
 @interface SCViewController () <
-SCTextLineSegmentControlProtocol,
+SCSegmentControlDataSource,
 SCSegmentControlDelegate
 >
 
@@ -24,16 +24,26 @@ SCSegmentControlDelegate
     [super viewDidLoad];
     
     SCTextLineSegmentControl *control = [[SCTextLineSegmentControl alloc] initWithFrame:CGRectMake(0, 100, self.view.frame.size.width, 64)];
-    control.backgroundColor = UIColor.orangeColor;
+//    control.backgroundColor = UIColor.purpleColor;
     control.scrollToCenter = NO;
     control.dataSource = self;
     control.delegate = self;
-    control.contentInset = UIEdgeInsetsMake(5, 5, 5, 5);
-    [control setupSelectedIndex:10];
+//    control.contentInset = UIEdgeInsetsMake(15, 5, 15, 5);
+//    [control setupSelectedIndex:10];
     control.indicatorBackgroundColor = UIColor.greenColor;
 //    control.indicatorImage = [UIImage imageNamed:@"waveIndicator"];
     control.indicatorRegularWidth = 20;
     control.indicatorHeight = 5;
+    control.selectItemTitleColor = UIColor.redColor;
+    control.selectItemTitleFont = [UIFont boldSystemFontOfSize:25];
+    control.normalItemTitleColor = UIColor.orangeColor;
+    control.normalItemTitleFont = [UIFont systemFontOfSize:12];
+    
+    NSMutableArray *titles = [NSMutableArray array];
+    for (NSInteger idx = 0; idx < 20; idx++) {
+        [titles addObject:[NSString stringWithFormat:@"item:%zd", idx]];
+    }
+    control.titles = titles;
     
     UIBezierPath *indicatorPath = [UIBezierPath bezierPath];
     [indicatorPath moveToPoint:CGPointZero];
@@ -45,42 +55,30 @@ SCSegmentControlDelegate
     indicatorLayer.path = indicatorPath.CGPath;
 //    control.indicatorLayer = indicatorLayer;
     
-    [control reloadData];
     [self.view addSubview:control];
     self.control = control;
+    [self.control processDataSource];
 }
 
 - (NSInteger)numberOfItemsInSegmentControl:(SCTextLineSegmentControl *)segmentControl {
-    return 100;
+    return self.control.titles.count;
 }
 
-//- (UIView *)segmentControl:(SCTextLineSegmentControl *)segmentControl itemAtIndex:(NSInteger)index {
-//    UILabel *label = [[UILabel alloc] init];
-//    label.text = [NSString stringWithFormat:@"item:%zd", index];
-//    label.textAlignment = NSTextAlignmentCenter;
-//    return label;
+- (CGFloat)itemSpacingInSegmentControl:(UIView *)segmentControl {
+    return 30;
+}
+
+//- (CGFloat)segmentControl:(SCTextLineSegmentControl *)segmentControl widthForItemAtIndex:(NSInteger)index {
+//
+//    return (self.view.frame.size.width - 30) / 2;
 //}
-
-- (CGFloat)minimumInteritemSpacingInSegmentControl:(SCTextLineSegmentControl *)segmentControl {
-    return 20;
-}
-
-- (CGFloat)segmentControl:(SCTextLineSegmentControl *)segmentControl widthForItemAtIndex:(NSInteger)index {
-    UILabel *label = (UILabel *)[self segmentControl:segmentControl itemAtIndex:index];
-    [label sizeToFit];
-    return label.frame.size.width;
-}
 
 - (void)segmentControl:(SCTextLineSegmentControl *)segmentControl didSelectItemAtIndex:(NSInteger)index {
     NSLog(@"currentIndex: %zd", segmentControl.currentIndex);
 }
 
-- (NSAttributedString *)segmentControl:(UIView *)segmentControl normalItemTitle:(NSString *)title attributeAtIndex:(NSInteger)index {
-    
-}
-
-- (NSAttributedString *)segmentControl:(UIView *)segmentControl selectItemTitle:(NSString *)title attributeAtIndex:(NSInteger)index {
-    
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [self.control setupSelectedIndex:80];
 }
 
 @end

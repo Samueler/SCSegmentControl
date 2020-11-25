@@ -6,9 +6,7 @@
 //
 
 #import "SCSegmentControl.h"
-#import "SCSegmentControlContainerCell.h"
-
-static NSString *const kSCSegmentControlContainerCellKey = @"kSCSegmentControlContainerCellKey";
+#import "SCSegmentControlFlowLayout.h"
 
 @interface SCSegmentControl () <
 UICollectionViewDelegateFlowLayout,
@@ -16,14 +14,14 @@ UICollectionViewDataSource,
 UICollisionBehaviorDelegate
 >
 
-@property (nonatomic, strong) UICollectionViewFlowLayout *flowLayout;
+@property (nonatomic, strong) SCSegmentControlFlowLayout *flowLayout;
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, assign) NSInteger totalItemCount;
-@property (nonatomic, assign) CGFloat minimumInteritemSpacing;
-@property (nonatomic, assign) BOOL performedReloadData;
+@property (nonatomic, assign) BOOL performedProcessDataSource;
 @property (nonatomic, assign) NSInteger initialSelectedIndex;
 @property (nonatomic, assign) CGSize scrollContentSize;
 @property (nonatomic, assign) CGPoint scrollContentOffset;
+@property (nonatomic, assign) CGFloat totalWidth;
 
 @end
 
@@ -53,7 +51,7 @@ UICollisionBehaviorDelegate
 
 #pragma mark - Public Functions
 
-- (void)reloadData {
+- (void)processDataSource {
     if (!self.dataSource) {
         NSAssert(NO, @"SCSegmentControl must confirm SCSegmentControlDataSource and implement required functions!");
         return;
@@ -64,36 +62,54 @@ UICollisionBehaviorDelegate
         return;
     }
     
-    if (![self.dataSource respondsToSelector:@selector(segmentControl:itemAtIndex:)]) {
+    if (![self.dataSource respondsToSelector:@selector(segmentControl:cellForItemAtIndex:)]) {
         NSAssert(NO, @"SCSegmentControl must confirm SCSegmentControlDataSource and implement required functions!");
         return;
     }
     
-    [self.collectionView reloadData];
+    if ([self.dataSource respondsToSelector:@selector(itemSpacingInSegmentControl:)]) {
+        self.flowLayout.itemSpacing = [self.dataSource itemSpacingInSegmentControl:self];
+    }
     
     [self.collectionView performBatchUpdates:^{
         [self.collectionView reloadData];
     } completion:^(BOOL finished) {
-        if (!self.performedReloadData && finished) {
-            self.performedReloadData = YES;
+        if (!self.performedProcessDataSource && finished) {
+            self.performedProcessDataSource = YES;
             [self setupSelectedIndex:self.initialSelectedIndex];
         }
     }];
 }
 
+- (void)reloadData {
+    [self.collectionView reloadData];
+}
+
 - (void)setupSelectedIndex:(NSInteger)selectedIndex {
-    if (!self.performedReloadData) {
+    if (!self.performedProcessDataSource) {
         self.initialSelectedIndex = selectedIndex;
         return;
     }
     
-    if (selectedIndex >= self.totalItemCount || selectedIndex < 0 || selectedIndex == self.currentIndex) {
+    if (selectedIndex >= self.totalItemCount || selectedIndex < 0) {
         return;
     }
     
     NSIndexPath *indexPath = [NSIndexPath indexPathForItem:selectedIndex inSection:0];
     
     [self collectionView:self.collectionView didSelectItemAtIndexPath:indexPath];
+}
+
+- (void)registerNib:(UINib *)nib forSegmentControlItemWithReuseIdentifier:(NSString *)identifier {
+    [self.collectionView registerNib:nib forCellWithReuseIdentifier:identifier];
+}
+
+- (void)registerClass:(Class)cellClass forSegmentControlItemWithReuseIdentifier:(NSString *)identifier {
+    [self.collectionView registerClass:cellClass forCellWithReuseIdentifier:identifier];
+}
+
+- (UICollectionViewCell *)dequeueReusableSegmentControlItemWithReuseIdentifier:(NSString *)identifier forIndex:(NSInteger)index {
+    return [self.collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:[NSIndexPath indexPathForItem:index inSection:0]];
 }
 
 #pragma mark - Override Functions
@@ -140,42 +156,14 @@ UICollisionBehaviorDelegate
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    SCSegmentControlContainerCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kSCSegmentControlContainerCellKey forIndexPath:indexPath];
-    UIView *itemView = [self.dataSource segmentControl:self itemAtIndex:indexPath.item];
-    if (itemView && ![cell.subviews containsObject:itemView]) {
-        [cell.contentView addSubview:itemView];
-    }
-    
-    if (CGRectEqualToRect(CGRectZero, itemView.frame)) {
-        itemView.frame = cell.bounds;
-    }
-    
-    return cell;
+    return [self.dataSource segmentControl:self cellForItemAtIndex:indexPath.item];
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:self.scrollToCenter ? UICollectionViewScrollPositionCenteredHorizontally : UICollectionViewScrollPositionLeft animated:YES];
+    [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
     
     self->_currentIndex = indexPath.item;
     
-    self->_selectedItemView = [collectionView cellForItemAtIndexPath:indexPath];
-    
-    if (!self.selectedItemView) {
-        return;
-    }
-    
-    if (self.delegate && [self.delegate respondsToSelector:@selector(segmentControl:didSelectItemAtIndex:)]) {
-        [self.delegate segmentControl:self didSelectItemAtIndex:self.currentIndex];
-    }
-}
-
-- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
-    // 解决设置起始选中下标时，selectedItemView为nil的问题
-    if (self.selectedItemView) {
-        return;
-    }
-    
-    self->_selectedItemView = [self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:self.currentIndex inSection:0]];
     if (self.delegate && [self.delegate respondsToSelector:@selector(segmentControl:didSelectItemAtIndex:)]) {
         [self.delegate segmentControl:self didSelectItemAtIndex:self.currentIndex];
     }
@@ -186,12 +174,7 @@ UICollisionBehaviorDelegate
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
-    self.minimumInteritemSpacing = 0;
-    
-    if (self.delegate && [self.delegate respondsToSelector:@selector(minimumInteritemSpacingInSegmentControl:)]) {
-        self.minimumInteritemSpacing = [self.dataSource minimumInteritemSpacingInSegmentControl:self];
-    }
-    return self.minimumInteritemSpacing;
+    return 0;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -200,6 +183,11 @@ UICollisionBehaviorDelegate
         itemWidth = [self.dataSource segmentControl:self widthForItemAtIndex:indexPath.item];
     }
     
+    if (indexPath.item == 0) {
+        self.totalWidth = 0;
+    }
+    
+    self.totalWidth += itemWidth;
     return CGSizeMake(itemWidth ?: 50, collectionView.frame.size.height - self.contentInset.top - self.contentInset.bottom);
 }
 
@@ -212,10 +200,9 @@ UICollisionBehaviorDelegate
 
 #pragma mark - Lazy Load
 
-- (UICollectionViewFlowLayout *)flowLayout {
+- (SCSegmentControlFlowLayout *)flowLayout {
     if (!_flowLayout) {
-        _flowLayout = [[UICollectionViewFlowLayout alloc] init];
-        _flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+        _flowLayout = [[SCSegmentControlFlowLayout alloc] init];
     }
     return _flowLayout;
 }
@@ -230,8 +217,6 @@ UICollisionBehaviorDelegate
         
         _collectionView.showsVerticalScrollIndicator = NO;
         _collectionView.showsHorizontalScrollIndicator = NO;
-        
-        [_collectionView registerClass:[SCSegmentControlContainerCell class] forCellWithReuseIdentifier:kSCSegmentControlContainerCellKey];
         
         if (@available(iOS 11.0, *)) {
             _collectionView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;

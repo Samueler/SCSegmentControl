@@ -28,7 +28,16 @@
 
 @optional
 
-/// 刷新数据
+- (void)registerNib:(UINib *)nib forSegmentControlItemWithReuseIdentifier:(NSString *)identifier;
+
+- (void)registerClass:(Class)cellClass forSegmentControlItemWithReuseIdentifier:(NSString *)identifier;
+
+- (UICollectionViewCell *)dequeueReusableSegmentControlItemWithReuseIdentifier:(NSString *)identifier forIndex:(NSInteger)index;
+
+/// 处理数据源（设置完属性，实现相关代理后，需要调用该方法）
+- (void)processDataSource;
+
+/// 刷新
 - (void)reloadData;
 
 /// 指定item被选中

@@ -12,7 +12,7 @@
 
 @optional
 
-- (void)segmentControl:(id)segmentControl didSelectItemAtIndex:(NSInteger)index;
+- (void)segmentControl:(UIView *)segmentControl didSelectItemAtIndex:(NSInteger)currentItemIndex;
 
 @end
 

@@ -1,1 +1,0 @@
-../../../../../SCSegmentControl/Classes/SCTextLineSegmentControlProtocol.h

@@ -10,7 +10,7 @@
 
 @protocol SCSegmentControlDataSource <NSObject>
 
-@required
+@optional
 
 /// 指定SCSegmentControl的item总数
 /// @param segmentControl segmentControl实例
@@ -19,13 +19,11 @@
 /// 自定义特定index下的view
 /// @param segmentControl segmentControl实例
 /// @param index index
-- (UIView *)segmentControl:(UIView *)segmentControl itemAtIndex:(NSInteger)index;
-
-@optional
+- (UICollectionViewCell *)segmentControl:(UIView *)segmentControl cellForItemAtIndex:(NSInteger)index;
 
 /// 指定每个item之间的间距
 /// @param segmentControl segmentControl实例
-- (CGFloat)minimumInteritemSpacingInSegmentControl:(UIView *)segmentControl;
+- (CGFloat)itemSpacingInSegmentControl:(UIView *)segmentControl;
 
 /// 指定对应下标item的宽度
 /// @param segmentControl segmentControl实例

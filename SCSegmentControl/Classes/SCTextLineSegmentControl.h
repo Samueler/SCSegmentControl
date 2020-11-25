@@ -6,7 +6,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SCTextLineSegmentControlProtocol.h"
+#import "SCSegmentControlProtocol.h"
 
 typedef NS_ENUM(NSUInteger, SCTextLineIndicatorStyle) {
     SCTextLineIndicatorStyleRegular,            // 指示器宽度固定
@@ -14,8 +14,23 @@ typedef NS_ENUM(NSUInteger, SCTextLineIndicatorStyle) {
 };
 
 @interface SCTextLineSegmentControl : UIView <
-SCTextLineSegmentControlProtocol
+SCSegmentControlProtocol
 >
+
+/// segment标题数组。自定义item时该属性无效
+@property (nonatomic, strong) NSArray *titles;
+
+/// 未被选中时标题的字体，默认15。自定义item时该属性无效
+@property (nonatomic, strong) UIFont *normalItemTitleFont;
+
+/// 未被选中时标题文字的颜色，默认黑色。自定义item时该属性无效
+@property (nonatomic, strong) UIColor *normalItemTitleColor;
+
+/// 选中时标题的字体，默认 bold 15。自定义item时该属性无效
+@property (nonatomic, strong) UIFont *selectItemTitleFont;
+
+/// 选中时标题的文字的颜色，默认橘黄色。自定义item时该属性无效
+@property (nonatomic, strong) UIColor *selectItemTitleColor;
 
 /// 是否隐藏指示器，默认为NO
 @property (nonatomic, assign) BOOL hideIndicator;
@@ -53,7 +68,10 @@ SCTextLineSegmentControlProtocol
 /// @param startPoint 渐变起点
 /// @param endPoint 渐变终点
 /// @param locations 坐标点
-- (void)setupIndicatorGradientWithColors:(NSArray *)indicatorGradientColors startPoint:(CGPoint)startPoint endPoint:(CGPoint)endPoint locations:(NSArray<NSNumber *> *)locations;
+- (void)setupIndicatorGradientWithColors:(NSArray *)indicatorGradientColors
+                              startPoint:(CGPoint)startPoint
+                                endPoint:(CGPoint)endPoint
+                               locations:(NSArray<NSNumber *> *)locations;
 
 
 @end
