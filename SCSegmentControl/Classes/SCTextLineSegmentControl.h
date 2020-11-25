@@ -62,7 +62,6 @@ SCSegmentControlProtocol
 /// 指示器使用图片时，图片的缩放形式
 @property (nonatomic, assign) UIViewContentMode indicatorImageViewMode;
 
-
 /// 设置指示器的渐变
 /// @param indicatorGradientColors 渐变颜色
 /// @param startPoint 渐变起点

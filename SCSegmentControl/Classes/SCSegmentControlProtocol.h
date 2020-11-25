@@ -28,10 +28,19 @@
 
 @optional
 
+/// 注册nib文件
+/// @param nib nib
+/// @param identifier 重用标识
 - (void)registerNib:(UINib *)nib forSegmentControlItemWithReuseIdentifier:(NSString *)identifier;
 
+/// 注册class
+/// @param cellClass cellClass
+/// @param identifier 重用标识
 - (void)registerClass:(Class)cellClass forSegmentControlItemWithReuseIdentifier:(NSString *)identifier;
 
+/// 通过重用标识获取cell
+/// @param identifier 重用标识
+/// @param index 下标
 - (UICollectionViewCell *)dequeueReusableSegmentControlItemWithReuseIdentifier:(NSString *)identifier forIndex:(NSInteger)index;
 
 /// 处理数据源（设置完属性，实现相关代理后，需要调用该方法）

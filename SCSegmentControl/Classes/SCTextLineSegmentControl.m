@@ -56,7 +56,7 @@ SCSegmentControlDelegate
     
     self.segmentControl.frame = self.bounds;
     self.indicatorScrollView.frame = CGRectMake(0, self.frame.size.height - self.indicatorHeight - self.indicatorBottomSpace, self.bounds.size.width, self.indicatorHeight);
-    self.indicator.frame = CGRectMake(0, 0, self.indicatorRegularWidth, self.indicatorHeight);
+    self.indicator.frame = CGRectMake(0, 0, self.indicatorStyle == SCTextLineIndicatorStyleRegular ? self.indicatorRegularWidth : [self segmentControl:self.segmentControl widthForItemAtIndex:self.segmentControl.currentIndex], self.indicatorHeight);
     self.indicatorGradientLayer.frame = self.indicator.bounds;
 }
 
@@ -144,7 +144,14 @@ SCSegmentControlDelegate
 
 - (UICollectionViewCell *)segmentControl:(UIView *)segmentControl cellForItemAtIndex:(NSInteger)index {
     if (self.dataSource && [self.dataSource respondsToSelector:@selector(segmentControl:cellForItemAtIndex:)]) {
-        return [self.dataSource segmentControl:self cellForItemAtIndex:index];
+        UICollectionViewCell *cell = [self.dataSource segmentControl:self cellForItemAtIndex:index];
+        NSAssert(!cell, @"segmentControl:cellForItemAtIndex return cell is nil");
+        if (cell) {
+            if (self.currentIndex == index) {
+                [self indicatorAnimationWithCell:cell];
+            }
+            return cell;
+        }
     }
     
     SCTextLineSegmentCell *textLineCell = (SCTextLineSegmentCell *)[self.segmentControl dequeueReusableSegmentControlItemWithReuseIdentifier:kSCTextLineSegmentCellKey forIndex:index];
@@ -154,14 +161,23 @@ SCSegmentControlDelegate
     textLineCell.titleLabel.textColor = isSelectedItem ? self.selectItemTitleColor : self.normalItemTitleColor;
     
     if (self.currentIndex == index) {
-        [UIView animateWithDuration:0.25 animations:^{
-            CGRect rect = self.indicator.frame;
-            rect.origin.x = textLineCell.frame.origin.x + (textLineCell.frame.size.width - self.indicatorRegularWidth) * 0.5;
-            self.indicator.frame = rect;
-        }];
+        [self indicatorAnimationWithCell:textLineCell];
     }
     
     return textLineCell;
+}
+
+- (void)indicatorAnimationWithCell:(UICollectionViewCell *)cell {
+    if (!cell) {
+        return;
+    }
+    
+    [UIView animateWithDuration:0.25 animations:^{
+        CGRect rect = self.indicator.frame;
+        rect.origin.x = cell.frame.origin.x + (self.indicatorStyle == SCTextLineIndicatorStyleRegular ? ((cell.frame.size.width - self.indicatorRegularWidth) * 0.5) : 0);
+        rect.size.width = self.indicatorStyle == SCTextLineIndicatorStyleRegular ? self.indicatorRegularWidth : cell.frame.size.width;
+        self.indicator.frame = rect;
+    }];
 }
 
 - (CGFloat)itemSpacingInSegmentControl:(UIView *)segmentControl {
@@ -214,6 +230,7 @@ SCSegmentControlDelegate
     _contentInset = contentInset;
     
     self.segmentControl.contentInset = contentInset;
+    self.indicatorScrollView.contentInset = contentInset;
 }
 
 - (void)setHideIndicator:(BOOL)hideIndicator {

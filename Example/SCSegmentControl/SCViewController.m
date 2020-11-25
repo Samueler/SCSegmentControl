@@ -32,6 +32,7 @@ SCSegmentControlDelegate
 //    [control setupSelectedIndex:10];
     control.indicatorBackgroundColor = UIColor.greenColor;
 //    control.indicatorImage = [UIImage imageNamed:@"waveIndicator"];
+    control.indicatorStyle = SCTextLineIndicatorStyleFollowContent;
     control.indicatorRegularWidth = 20;
     control.indicatorHeight = 5;
     control.selectItemTitleColor = UIColor.redColor;
